@@ -260,6 +260,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Humanizer.Core": {
+              "target": "Package",
+              "version": "[2.7.9, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.1.2, )"

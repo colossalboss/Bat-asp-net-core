@@ -26,6 +26,7 @@
         "dependencies": {
           "9jaTips.Data": "1.0.0",
           "9jaTips.Services": "1.0.0",
+          "Humanizer.Core": "2.7.9",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.2",
           "Microsoft.EntityFrameworkCore.Design": "3.1.2",
           "Swashbuckle.AspNetCore": "5.0.0-rc4",
@@ -293,6 +294,17 @@
         },
         "compile": {
           "9jaTips.Web.dll": {}
+        }
+      },
+      "Humanizer.Core/2.7.9": {
+        "runtime": {
+          "lib/netstandard2.0/Humanizer.dll": {
+            "assemblyVersion": "2.7.0.0",
+            "fileVersion": "2.7.9.7024"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.Abstractions/2.0.0": {
@@ -3342,6 +3354,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Humanizer.Core/2.7.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CvBPqAgYcvRCDgtHi9pUdPpZqWGyqfJe02qDugMCy4/xia+q0xm/xxqTO55aZkJapdgqrvHb0I5u+sHLzovp+Q==",
+      "path": "humanizer.core/2.7.9",
+      "hashPath": "humanizer.core.2.7.9.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.Abstractions/2.0.0": {
       "type": "package",

@@ -14,5 +14,7 @@ namespace _9jaTips.Web.ViewModels
         public String Thoughts { get; set; }
 
         public Guid UserId { get; set; }
+
+        public string PostDate { get; set; }
     }
 }

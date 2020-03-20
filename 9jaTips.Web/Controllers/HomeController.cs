@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using _9jaTips.Web.Models;
 using _9jaTips.Services.Interfaces;
 using _9jaTips.Web.ViewModels;
+using Humanizer;
 
 namespace _9jaTips.Web.Controllers
 {
@@ -36,7 +37,8 @@ namespace _9jaTips.Web.Controllers
                     Id = post.Id,
                     Thoughts = post.Thoughts,
                     Tip = post.Tip,
-                    UserId = post.AppUserId
+                    UserId = post.AppUserId,
+                    PostDate = post.PostDate.Humanize()
                 };
                 modelList.Add(model);
             }

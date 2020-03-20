@@ -99,7 +99,8 @@ namespace _9jaTips.Web.Controllers
                     AppUserId = model.AppUserId,
                     Tip = model.Tip,
                     Thoughts = model.Thoughts,
-                    MatchId = model.MatchId
+                    MatchId = model.MatchId,
+                    PostDate = DateTime.Now
                 };
 
                 _fixtures.AddPost(post);
