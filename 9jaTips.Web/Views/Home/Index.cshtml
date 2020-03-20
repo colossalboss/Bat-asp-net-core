@@ -1,0 +1,74 @@
+﻿@model List<ListPostViewModel>
+@inject UserManager<AppUser> userManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        @foreach (var post in Model)
+        {
+            <div class="card py-2">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-5">
+                                @{
+                                   var user = await userManager.FindByIdAsync(post.UserId.ToString());
+                                }
+                                @user.UserName.Split('@')[0]
+                            </div>
+                            <div class="col-md-7 float-right px-1">
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">
+                                <div class="col-md-12">
+                                    <div class="py-2">
+                                        <p class="mb-0">@post.Fixture.Home vs @post.Fixture.Away #@post.Tip</p>
+                                        <p>@post.Fixture.League in @post.Fixture.Country</p>
+                                    </div>
+                                    <p>@post.Thoughts</p>
+                                </div>
+                            </a>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <a><i class="fa fa-comment"></i>Comment</a>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <a><i class="fa fa-heart"></i>Like</a>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <a><i class="fa fa-facebook"></i>Facebook</a>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <a><i class="fa fa-twitter"></i>Twitter</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

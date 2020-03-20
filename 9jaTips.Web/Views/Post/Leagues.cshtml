@@ -1,0 +1,18 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="card border-0">
+            
+            <div class="card-body">
+                <h4 class="card-title">Choose a League</h4>
+                <a asp-action="Countries" class="btn btn-default border">Back</a>
+
+                <ul class="list-group">
+                    @foreach (var league in ViewBag.Leagues)
+                    {
+                        <li class="list-group-item mt-2"><a asp-controller="Post" asp-action="Fixtures" asp-route-country="@ViewBag.Country" asp-route-league="@league">@league</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

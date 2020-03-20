@@ -1,0 +1,13 @@
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Services.deps.json
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Services.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Services.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.csprojAssemblyReference.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.AssemblyInfoInputs.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.AssemblyInfo.cs
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Data.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Entities.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Data.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Entities.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.csproj.CopyComplete

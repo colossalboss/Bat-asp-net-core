@@ -1,0 +1,24 @@
+﻿@model List<Match>
+
+@{
+    ViewData["Title"] = "Fixtures";
+}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-0">
+
+                <div class="card-body">
+                    <h4 class="card-title">@Model[0].League</h4>
+                    <h6>@Model[0].Country</h6>
+                    <a asp-action="Leagues" asp-route-country="@Model[0].Country" class="btn btn-default border">Back</a>
+                    <ul class="list-group">
+                        @foreach (var fixture in Model)
+                        {
+                            <li class="list-group-item mt-2"><a asp-controller="Post" asp-action="Picks" asp-route-matchId="@fixture.MatchId">@fixture.Home vs @fixture.Away</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>

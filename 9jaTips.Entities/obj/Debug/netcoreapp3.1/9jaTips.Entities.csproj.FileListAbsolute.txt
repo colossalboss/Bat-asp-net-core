@@ -1,0 +1,8 @@
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/bin/Debug/netcoreapp3.1/9jaTips.Entities.deps.json
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/bin/Debug/netcoreapp3.1/9jaTips.Entities.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/bin/Debug/netcoreapp3.1/9jaTips.Entities.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.AssemblyInfoInputs.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.AssemblyInfo.cs
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.csprojAssemblyReference.cache

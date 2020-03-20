@@ -1,0 +1,29 @@
+﻿@model PostViewModel
+
+@{
+    ViewData["Title"] = "Post Tip";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card border-0">
+            <div class="card-body">
+                <p>@Model.Fixture.Home vs @Model.Fixture.Away #@Model.Tip</p>
+
+                <form method="post">
+                    <input type="hidden" asp-for="AppUserId" />
+                    <input type="hidden" asp-for="MatchId" />
+                    <input type="hidden" asp-for="Tip" />
+                    <div class="form-group">
+                        <textarea asp-for="Thoughts" rows="6" placeholder="Write your thoughts" class="form-control"></textarea>
+                        <span asp-validation-for="Thoughts"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Post</button>
+
+                    <a class="btn btn-default border" asp-action="Picks" asp-route-matchId="@Model.MatchId">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

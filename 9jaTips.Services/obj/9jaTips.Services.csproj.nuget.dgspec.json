@@ -1,0 +1,225 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/9jaTips.Services.csproj": {}
+  },
+  "projects": {
+    "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/9jaTips.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/9jaTips.Data.csproj",
+        "projectName": "9jaTips.Data",
+        "projectPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/9jaTips.Data.csproj",
+        "packagesPath": "/Users/ogbaragodwin/.nuget/packages/",
+        "outputPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ogbaragodwin/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/9jaTips.Entities.csproj": {
+                "projectPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/9jaTips.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/9jaTips.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/9jaTips.Entities.csproj",
+        "projectName": "9jaTips.Entities",
+        "projectPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/9jaTips.Entities.csproj",
+        "packagesPath": "/Users/ogbaragodwin/.nuget/packages/",
+        "outputPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ogbaragodwin/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/9jaTips.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/9jaTips.Services.csproj",
+        "projectName": "9jaTips.Services",
+        "projectPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/9jaTips.Services.csproj",
+        "packagesPath": "/Users/ogbaragodwin/.nuget/packages/",
+        "outputPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ogbaragodwin/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/9jaTips.Data.csproj": {
+                "projectPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/9jaTips.Data.csproj"
+              },
+              "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/9jaTips.Entities.csproj": {
+                "projectPath": "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/9jaTips.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

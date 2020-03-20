@@ -1,0 +1,16 @@
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Migrations.deps.json
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Migrations.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Migrations.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Data.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Entities.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Data.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Entities.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.csprojAssemblyReference.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.AssemblyInfoInputs.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.AssemblyInfo.cs
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.csproj.CopyComplete
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.pdb
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Migrations.runtimeconfig.json
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Migrations.runtimeconfig.dev.json
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.genruntimeconfig.cache
