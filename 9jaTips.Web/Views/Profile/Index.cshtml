@@ -1,0 +1,77 @@
+﻿@model AppUser
+
+@{
+    ViewData["Title"] = "Profile Page";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                            </div>
+                        </div>
+                        <h4 class="card-title">Ogbara Gerrald</h4>
+                        <p>#@Model.UserName.Split("@")[0]</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-primary text-light float-right">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">Streak</h4>
+
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+                <span class="bg-success">W</span>
+
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">Summary</h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Posts</h5>
+                        <span>99+</span>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Wins</h5>
+                        <span>99+</span>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Losses</h5>
+                        <span>99+</span>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Streak</h5>
+                        <span>99+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

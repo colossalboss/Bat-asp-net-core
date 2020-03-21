@@ -21,7 +21,7 @@
                                 @{
                                    var user = await userManager.FindByIdAsync(post.UserId.ToString());
                                 }
-                                @user.UserName.Split('@')[0]
+                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@post.UserId">@user.UserName.Split('@')[0]</a>
                             </div>
                             <div class="col-md-7 float-right px-1">
                                 <span class="bg-success">W</span>

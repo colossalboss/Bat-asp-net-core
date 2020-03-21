@@ -388,3 +388,4 @@
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/obj/Debug/netcoreapp3.1/Razor/Views/Post/Picks.cshtml.g.cs
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/obj/Debug/netcoreapp3.1/Razor/Views/Post/Predict.cshtml.g.cs
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/bin/Debug/netcoreapp3.1/Humanizer.dll
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/obj/Debug/netcoreapp3.1/Razor/Views/Profile/Index.cshtml.g.cs

@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{B419B0BD-DE24-41FE-A2A6-BB5860DBE0CE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Views/Profile/Index.cshtml">
     <Files>
-      <File FileName="9jaTips.Web/Controllers/PostController.cs" Line="30" Column="13" />
-      <File FileName="9jaTips.Web/Views/Home/Index.cshtml" Line="13" Column="36" />
-      <File FileName="9jaTips.Web/Views/_ViewImports.cshtml" Line="5" Column="31" />
-      <File FileName="9jaTips.Web/ViewModels/ListPostViewModel.cs" Line="16" Column="41" />
-      <File FileName="9jaTips.Services/Interfaces/IFixtures.cs" Line="14" Column="19" />
-      <File FileName="9jaTips.Services/Repositories/FixturesRepository.cs" Line="27" Column="26" />
-      <File FileName="9jaTips.Web/Controllers/HomeController.cs" Line="39" Column="36" />
+      <File FileName="9jaTips.Web/Controllers/PostController.cs" Line="114" Column="1" />
+      <File FileName="9jaTips.Web/ViewModels/ListPostViewModel.cs" />
+      <File FileName="9jaTips.Services/Interfaces/IFixtures.cs" />
+      <File FileName="9jaTips.Services/Repositories/FixturesRepository.cs" />
+      <File FileName="9jaTips.Web/Controllers/HomeController.cs" />
+      <File FileName="9jaTips.Web/Controllers/ProfileController.cs" Line="32" Column="1" />
+      <File FileName="9jaTips.Web/Views/Profile/Index.cshtml" Line="16" Column="1" />
+      <File FileName="9jaTips.Web/Views/Home/Index.cshtml" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,14 +27,15 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="ProjectDependencies" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
                 <Node name="Home" expanded="True" />
                 <Node name="Post" expanded="True" />
+                <Node name="Profile" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
@@ -50,9 +52,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.9jaTips.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Controllers/PostController.cs" relfile="9jaTips.Web/Controllers/PostController.cs" line="46" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
