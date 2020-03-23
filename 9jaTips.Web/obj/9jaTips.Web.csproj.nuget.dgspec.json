@@ -260,6 +260,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "FontAwesome.WPF": {
+              "target": "Package",
+              "version": "[4.7.0.9, )"
+            },
             "Humanizer.Core": {
               "target": "Package",
               "version": "[2.7.9, )"

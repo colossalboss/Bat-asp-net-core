@@ -21,7 +21,7 @@
                                 @{
                                    var user = await userManager.FindByIdAsync(post.UserId.ToString());
                                 }
-                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@post.UserId">@user.UserName.Split('@')[0]</a>
+                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@post.UserId"> @user.UserName.Split('@')[0]</a>
                             </div>
                             <div class="col-md-7 float-right px-1">
                                 <span class="bg-success">W</span>
@@ -48,19 +48,21 @@
                         </div>
                         <hr />
                         <div class="row">
-                            <form method="post">
+                            <form method="post" style="width: 100%">
                                 <div class="row">
-                                    <div class="col-sm-3">
-                                        <a><i class="fa fa-comment"></i>Comment</a>
+                                    <div class="col-sm-3 col-md-3">
+                                        <a data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-comment"  id="@post.Id" onclick="loadData(event)"></i>
+                                        </a>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <a><i class="fa fa-heart"></i>Like</a>
+                                    <div class="col-sm-3 col-md-3">
+                                        <a><i class="fa fa-heart"></i></a>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <a><i class="fa fa-facebook"></i>Facebook</a>
+                                    <div class="col-sm-3 col-md-3">
+                                        <a><i class="fa fa-facebook"></i></a>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <a><i class="fa fa-twitter"></i>Twitter</a>
+                                    <div class="col-sm-3 col-md-3">
+                                        <a><i class="fa fa-twitter"></i></a>
                                     </div>
                                 </div>
                             </form>
@@ -71,5 +73,77 @@
         }
 
 
+    </div>
+</div>
+
+
+@*-----Modal-----*@
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form  id="saveComment">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card py-2">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <a asp-controller="Profile" asp-action="Index" class="username" asp-route-id="post.UserId">UserName</a>
+                                    </div>
+                                    <div class="col-md-7 float-right px-1">
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <a asp-controller="Post" asp-action="Details" asp-route-id="post.Id">
+                                        <div class="col-md-12">
+                                            <div class="py-2">
+                                                <p class="mb-0 match-tip"></p>
+                                                <p class="location"></p>
+                                            </div>
+                                            <p class="mb-0 thoughts">post.Thoughts</p>
+                                            <span style="font-size: 12px" class="time"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" id="commenterId" type="hidden" />
+                                    <div class="form-group">
+                                        <textarea id="comment" rows="6" placeholder="Your comment" style="width: 100%"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="saveBtn">Save changes</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

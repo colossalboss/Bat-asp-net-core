@@ -15,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     <PackageReference Include="Humanizer.Core" Version="2.7.9" />
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\9jaTips.Data\9jaTips.Data.csproj">

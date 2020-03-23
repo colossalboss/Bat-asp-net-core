@@ -26,6 +26,7 @@
         "dependencies": {
           "9jaTips.Data": "1.0.0",
           "9jaTips.Services": "1.0.0",
+          "FontAwesome.WPF": "4.7.0.9",
           "Humanizer.Core": "2.7.9",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.2",
           "Microsoft.EntityFrameworkCore.Design": "3.1.2",
@@ -294,6 +295,17 @@
         },
         "compile": {
           "9jaTips.Web.dll": {}
+        }
+      },
+      "FontAwesome.WPF/4.7.0.9": {
+        "runtime": {
+          "lib/net40/FontAwesome.WPF.dll": {
+            "assemblyVersion": "4.7.0.37774",
+            "fileVersion": "4.7.0.9"
+          }
+        },
+        "compile": {
+          "lib/net40/FontAwesome.WPF.dll": {}
         }
       },
       "Humanizer.Core/2.7.9": {
@@ -3354,6 +3366,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "FontAwesome.WPF/4.7.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SXE080rnyWMm9Dt0BZzMxh89/o9teuSaqL1N+0O/XM/F/HU8JuZA4XaEKxjBigwZPHHU3/udTa0QMYCHkmH43Q==",
+      "path": "fontawesome.wpf/4.7.0.9",
+      "hashPath": "fontawesome.wpf.4.7.0.9.nupkg.sha512"
     },
     "Humanizer.Core/2.7.9": {
       "type": "package",

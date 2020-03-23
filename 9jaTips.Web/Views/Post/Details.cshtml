@@ -1,0 +1,123 @@
+﻿@model DetailsViewModel
+@inject UserManager<AppUser> userManager
+
+
+@{
+    ViewData["Title"] = "Post details";
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card py-2">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-5">
+                            @{
+                                var user = await userManager.FindByIdAsync(Model.AppUserId.ToString());
+                            }
+                            <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model.AppUserId"> @user.UserName.Split('@')[0]</a>
+                        </div>
+                        <div class="col-md-7 float-right px-1">
+                            <span class="bg-success">W</span>
+                            <span class="bg-success">W</span>
+                            <span class="bg-success">W</span>
+                            <span class="bg-success">W</span>
+                            <span class="bg-success">W</span>
+                            <span class="bg-success">W</span>
+                            <span class="bg-success">W</span>
+                            <span class="bg-success">W</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a asp-controller="Post" asp-action="Details" asp-route-id="@Model.Id">
+                            <div class="col-md-12">
+                                <div class="py-2">
+                                    <p class="mb-0">@Model.Prediction</p>
+                                    <p>@Model.Location</p>
+                                </div>
+                                <p class="mb-0">@Model.Thoughts</p>
+                                <span style="font-size: 12px">@Model.PostDate</span>
+                            </div>
+                        </a>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <form method="post" style="width: 100%">
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3">
+                                    <a>
+                                        <i class="fa fa-comment"></i>
+                                    </a>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <a><i class="fa fa-heart"></i></a>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <a><i class="fa fa-facebook"></i></a>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <a><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <textarea asp-for="Message" rows="6" class="form-control" placeholder="Write your comment"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Send</button>
+                </form>
+            </div>
+        </div>
+
+
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="card py-2">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-5">
+                                @{
+                                    var commenter = await userManager.FindByIdAsync(comment.AppUserId.ToString());
+                                }
+                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@comment.AppUserId"> @commenter.UserName.Split('@')[0]</a>
+                            </div>
+                            <div class="col-md-7 float-right px-1">
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                                <span class="bg-success">W</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>@comment.Message</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

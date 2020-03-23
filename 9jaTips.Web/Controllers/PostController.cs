@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _9jaTips.Entities;
 using _9jaTips.Services.Interfaces;
 using _9jaTips.Web.ViewModels;
+using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -89,6 +90,59 @@ namespace _9jaTips.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Details(Guid id)
+        {
+
+            var post = _fixtures.GetPostById(id);
+            var match = _fixtures.GetMatchById(post.MatchId);
+
+            if (post != null)
+            {
+                DetailsViewModel model = new DetailsViewModel
+                {
+                    AppUserId = post.AppUserId,
+                    Comments = post.Comments,
+                    Id = post.Id,
+                    PostDate = post.PostDate,
+                    Thoughts = post.Thoughts,
+                    Prediction = $"{match.Home} vs {match.Away} #{post.Tip}",
+                    Location = $"{match.League} in {match.Country}"
+                };
+
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Details(DetailsViewModel model)
+        {
+            // Check if postID exist
+            if (model.Id != null)
+            {
+                Comment comment = new Comment
+                {
+                    AppUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                    Message = model.Message,
+                    PostId = model.Id,
+                    TimeStamp = DateTime.Now
+                };
+
+                var saved = _fixtures.AddComment(comment);
+
+                if (saved != null)
+                {
+                    return RedirectToAction("Details", new { id = model.Id });
+                }
+
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public IActionResult Predict(PostViewModel model)
         {
@@ -108,6 +162,54 @@ namespace _9jaTips.Web.Controllers
             }
 
             return View(model);
+        }
+
+        // AJAX
+        public async Task<IActionResult> GetOne(Guid id)
+        {
+            var post = _fixtures.GetOnePost(id);
+            var user = await userManager.FindByIdAsync(post.AppUserId.ToString());
+            if (post != null)
+            {
+                var postInfo = new AjaxPostViewModel
+                {
+                    Id = post.Id,
+                    Location = $"{_fixtures.GetMatchById(post.MatchId).League} in {_fixtures.GetMatchById(post.MatchId).Country}",
+                    Thoughts = post.Thoughts,
+                    TimeStamp = post.PostDate.Humanize(),
+                    Tip = $"{_fixtures.GetMatchById(post.MatchId).Home} vs {_fixtures.GetMatchById(post.MatchId).Away} #{post.Tip}",
+                    UserId = post.AppUserId,
+                    UserName = user.UserName.Split("@")[0],
+                };
+                return Json(new { success = true, data = postInfo });
+            }
+            else
+            {
+                return Json(new { success = false, message = "Invalid Post" });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult PostComment(Comment model)
+        {
+            if (model.AppUserId != null)
+            {
+                Comment comment = new Comment
+                {
+                    AppUserId = model.AppUserId,
+                    Message = model.Message,
+                    PostId = model.PostId,
+                    TimeStamp = DateTime.Now
+
+                };
+                var saved = _fixtures.AddComment(comment);
+
+                if (saved != null)
+                {
+                    return Json(new { success = true, data = saved });
+                }
+            }
+            return Json(new { success = false, message = "Invalid Comment" });
         }
     }
 }

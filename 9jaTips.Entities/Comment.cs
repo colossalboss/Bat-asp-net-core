@@ -19,6 +19,8 @@ namespace _9jaTips.Entities
         [Required]
         public string Message { get; set; }
 
+        public DateTime TimeStamp { get; set; }
+
         [Required]
         public Guid AppUserId { get; set; }
 

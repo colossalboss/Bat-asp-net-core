@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using _9jaTips.Entities;
+using _9jaTips.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,12 @@ namespace _9jaTips.Web.Controllers
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> userManager;
+        private readonly IFixtures _fixture;
 
-        public ProfileController(UserManager<AppUser> userManager)
+        public ProfileController(UserManager<AppUser> userManager, IFixtures fixture)
         {
             this.userManager = userManager;
+            _fixture = fixture;
         }
 
         // GET: /<controller>/
@@ -24,9 +27,12 @@ namespace _9jaTips.Web.Controllers
         {
             var user = await userManager.FindByIdAsync(id.ToString());
 
+            var usersPost = _fixture.GetUsersPost(id);
+
             if (user != null)
             {
                 //Instantiate and return ProfileVM
+                user.Posts = usersPost;
                 return View(user);
             }
 

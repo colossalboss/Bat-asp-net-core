@@ -5,6 +5,7 @@ using _9jaTips.Data;
 using _9jaTips.Entities;
 using _9jaTips.Services.Interfaces;
 using _9jaTips.Services.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace _9jaTips.Services.Repositories
 {
@@ -68,6 +69,31 @@ namespace _9jaTips.Services.Repositories
         public Match GetMatchById(int id)
         {
             return _db.AllMatches.FirstOrDefault(m => m.MatchId == id);
+        }
+
+        public Post GetOnePost(Guid id)
+        {
+            return _db.AllPosts.FirstOrDefault(p => p.Id == id);
+        }
+
+        public Post GetPostById(Guid id)
+        {
+            return _db.AllPosts.Include(p => p.Comments).Include(p => p.AppUser).FirstOrDefault(p => p.Id == id);
+        }
+
+        public List<Post> GetUsersPost(Guid id)
+        {
+            return _db.AllPosts.Where(p => p.AppUserId == id).ToList();
+        }
+
+
+
+        // Comment
+        public Comment AddComment(Comment comment)
+        {
+            _db.AllComments.Add(comment);
+            _db.SaveChanges();
+            return comment;
         }
     }
 }
