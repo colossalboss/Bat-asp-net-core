@@ -19,5 +19,11 @@ namespace _9jaTips.Services.Interfaces
         List<Post> GetAllPosts();
 
         Comment AddComment(Comment comment);
+
+        Like AddLike(Like like);
+
+        int GetCount(Guid id);
+
+        bool HasLiked(Guid postId, Guid userId);
     }
 }

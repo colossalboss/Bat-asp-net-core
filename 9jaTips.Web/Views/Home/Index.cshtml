@@ -1,5 +1,6 @@
 ﻿@model List<ListPostViewModel>
 @inject UserManager<AppUser> userManager
+@inject IFixtures _fixtures
 
 @{
     ViewData["Title"] = "Home Page";
@@ -8,9 +9,9 @@
 <div class="row">
     <div class="col-md-12">
 
-        @foreach (var post in Model)
+        @for (var i = 0; i < Model.Count; i++)
         {
-            <div class="card py-2">
+            <div class="card py-2 mt-2">
                 <div class="row">
                     <div class="col-md-2">
                         <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
@@ -19,9 +20,9 @@
                         <div class="row">
                             <div class="col-md-5">
                                 @{
-                                   var user = await userManager.FindByIdAsync(post.UserId.ToString());
+                                   var user = await userManager.FindByIdAsync(Model[i].UserId.ToString());
                                 }
-                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@post.UserId"> @user.UserName.Split('@')[0]</a>
+                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model[i].UserId"> @user.UserName.Split('@')[0]</a>
                             </div>
                             <div class="col-md-7 float-right px-1">
                                 <span class="bg-success">W</span>
@@ -35,28 +36,33 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">
+                            <a asp-controller="Post" asp-action="Details" asp-route-id="@Model[i].Id">
                                 <div class="col-md-12">
                                     <div class="py-2">
-                                        <p class="mb-0">@post.Fixture.Home vs @post.Fixture.Away #@post.Tip</p>
-                                        <p>@post.Fixture.League in @post.Fixture.Country</p>
+                                        <p class="mb-0">@Model[i].Fixture.Home vs @Model[i].Fixture.Away #@Model[i].Tip</p>
+                                        <p>@Model[i].Fixture.League in @Model[i].Fixture.Country</p>
                                     </div>
-                                    <p class="mb-0">@post.Thoughts</p>
-                                    <span style="font-size: 12px">@post.PostDate</span>
+                                    <p class="mb-0">@Model[i].Thoughts</p>
+                                    <span style="font-size: 12px">@Model[i].PostDate</span>
                                 </div>
                             </a>
                         </div>
                         <hr />
                         <div class="row">
-                            <form method="post" style="width: 100%">
+                            <form method="post" style="width: 100%" asp-route-postId="@Model[i].Id" asp-action="Like" asp-controller="Post">
                                 <div class="row">
                                     <div class="col-sm-3 col-md-3">
                                         <a data-toggle="modal" data-target="#exampleModal">
-                                            <i class="fa fa-comment"  id="@post.Id" onclick="loadData(event)"></i>
+                                            <i class="fa fa-comment"  id="@Model[i].Id" onclick="loadData(event)"></i>
+                                            <span>@Model[i].Comments.Count()</span>
                                         </a>
                                     </div>
                                     <div class="col-sm-3 col-md-3">
-                                        <a><i class="fa fa-heart"></i></a>
+                                        <input type="submit" id="submit_@Model[i].Id" style="display: none" />
+                                        <label for="submit_@Model[i].Id">
+                                            <i class="fa fa-heart"></i>
+                                            <span>@_fixtures.GetCount(Model[i].Id)</span>   
+                                        </label>
                                     </div>
                                     <div class="col-sm-3 col-md-3">
                                         <a><i class="fa fa-facebook"></i></a>

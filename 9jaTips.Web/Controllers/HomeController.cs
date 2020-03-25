@@ -38,7 +38,8 @@ namespace _9jaTips.Web.Controllers
                     Thoughts = post.Thoughts,
                     Tip = post.Tip,
                     UserId = post.AppUserId,
-                    PostDate = post.PostDate.Humanize()
+                    PostDate = post.PostDate.Humanize(),
+                    Comments = post.Comments
                 };
                 modelList.Add(model);
             }

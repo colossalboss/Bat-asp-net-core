@@ -27,7 +27,7 @@ namespace _9jaTips.Services.Repositories
 
         public List<Post> GetAllPosts()
         {
-            return _db.AllPosts.ToList();
+            return _db.AllPosts.Include(p => p.Comments).ToList();
         }
 
         public List<string> GetCountries()
@@ -94,6 +94,29 @@ namespace _9jaTips.Services.Repositories
             _db.AllComments.Add(comment);
             _db.SaveChanges();
             return comment;
+        }
+
+        // Like
+        public Like AddLike(Like like)
+        {
+            _db.AllLikes.Add(like);
+            _db.SaveChanges();
+            return like;
+        }
+
+        public int GetCount(Guid id)
+        {
+            return _db.AllLikes.Where(p => p.PostId == id).Count();
+        }
+
+        public bool HasLiked(Guid postId, Guid userId)
+        {
+            var like = _db.AllLikes.Where(l => l.PostId == postId && l.UserId == userId).ToList();
+            if (like.Count() == 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

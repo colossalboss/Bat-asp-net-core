@@ -9,6 +9,8 @@ namespace _9jaTips.Web.ViewModels
         {
         }
 
+        public string TimeStamp { get; set; }
+
         public string Location { get; set; }
 
         public string Prediction { get; set; }

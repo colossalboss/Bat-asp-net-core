@@ -104,7 +104,7 @@ namespace _9jaTips.Web.Controllers
                     AppUserId = post.AppUserId,
                     Comments = post.Comments,
                     Id = post.Id,
-                    PostDate = post.PostDate,
+                    TimeStamp = post.PostDate.Humanize(),
                     Thoughts = post.Thoughts,
                     Prediction = $"{match.Home} vs {match.Away} #{post.Tip}",
                     Location = $"{match.League} in {match.Country}"
@@ -162,6 +162,23 @@ namespace _9jaTips.Web.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Like(Guid postId)
+        {
+            var check = _fixtures.HasLiked(postId, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            if (check == false)
+            {
+                Like like = new Like
+                {
+                    PostId = postId,
+                    UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
+                };
+                _fixtures.AddLike(like);
+                return RedirectToAction("Details", new { id = postId });
+            }
+            return RedirectToAction("Details", new { id = postId });
         }
 
         // AJAX
