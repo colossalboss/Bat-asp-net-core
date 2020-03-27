@@ -91,23 +91,41 @@ namespace _9jaTips.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(Guid id)
+        public async Task<IActionResult> Details(Guid id)
         {
 
             var post = _fixtures.GetPostById(id);
             var match = _fixtures.GetMatchById(post.MatchId);
+            var user = await userManager.FindByIdAsync(post.AppUserId.ToString());
+
+            var postComments = new List<CommentsViewModel>();
+
+            foreach(var comment in post.Comments)
+            {
+                var pc = new CommentsViewModel
+                {
+                    AppUserId = comment.AppUserId,
+                    Id = comment.Id,
+                    Message = comment.Message,
+                    PostId = comment.PostId,
+                    Time = comment.TimeStamp.Humanize(),
+
+                };
+                postComments.Add(pc);
+            }
 
             if (post != null)
             {
                 DetailsViewModel model = new DetailsViewModel
                 {
                     AppUserId = post.AppUserId,
-                    Comments = post.Comments,
+                    PostComments = postComments,
                     Id = post.Id,
                     TimeStamp = post.PostDate.Humanize(),
                     Thoughts = post.Thoughts,
                     Prediction = $"{match.Home} vs {match.Away} #{post.Tip}",
-                    Location = $"{match.League} in {match.Country}"
+                    Location = $"{match.League} in {match.Country}",
+                    UserImage = user.Image
                 };
 
                 return View(model);
@@ -164,21 +182,56 @@ namespace _9jaTips.Web.Controllers
             return View(model);
         }
 
+        //[HttpPost]
+        //public IActionResult Like(Guid postId)
+        //{
+        //    var check = _fixtures.HasLiked(postId, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+        //    if (check == false)
+        //    {
+        //        Like like = new Like
+        //        {
+        //            PostId = postId,
+        //            UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
+        //        };
+        //        _fixtures.AddLike(like);
+        //        string referer = Request.Headers["Referer"].ToString();
+        //        return Redirect(referer);
+        //    }
+        //    string referrer = Request.Headers["Referer"].ToString();
+        //    return Redirect(referrer);
+        //}
+
         [HttpPost]
-        public IActionResult Like(Guid postId)
+        public IActionResult Like(Like model)
         {
-            var check = _fixtures.HasLiked(postId, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
-            if (check == false)
+            if (model != null)
             {
-                Like like = new Like
+                var check = _fixtures.HasLiked(model.PostId, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                if (check == null)
                 {
-                    PostId = postId,
-                    UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
-                };
-                _fixtures.AddLike(like);
-                return RedirectToAction("Details", new { id = postId });
+                    Like like = new Like
+                    {
+                        PostId = model.PostId,
+                        UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    };
+                    var result = _fixtures.AddLike(like);
+                    if (result != null)
+                    {
+                        return Json(new { data = result, added = true });
+                    }
+                }
+                else
+                {
+                    var unliked = _fixtures.Unlike(model.PostId, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                    if (unliked != null)
+                    {
+                        return Json(new { data = unliked, removed = true });
+                    }
+                }
             }
-            return RedirectToAction("Details", new { id = postId });
+
+            return Json(new { message = "An Error Occurred" });
+
         }
 
         // AJAX
@@ -197,6 +250,7 @@ namespace _9jaTips.Web.Controllers
                     Tip = $"{_fixtures.GetMatchById(post.MatchId).Home} vs {_fixtures.GetMatchById(post.MatchId).Away} #{post.Tip}",
                     UserId = post.AppUserId,
                     UserName = user.UserName.Split("@")[0],
+                    UserImage = user.Image
                 };
                 return Json(new { success = true, data = postInfo });
             }
@@ -213,7 +267,7 @@ namespace _9jaTips.Web.Controllers
             {
                 Comment comment = new Comment
                 {
-                    AppUserId = model.AppUserId,
+                    AppUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)),
                     Message = model.Message,
                     PostId = model.PostId,
                     TimeStamp = DateTime.Now

@@ -1,5 +1,6 @@
 ﻿@model DetailsViewModel
 @inject UserManager<AppUser> userManager
+@inject IFixtures _fixtures
 
 
 @{
@@ -11,12 +12,20 @@
     <div class="col-md-12">
         <div class="card py-2">
             <div class="row">
-                <div class="col-md-2">
-                    <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                <div class="col-md-2 box1">
+                    @if (Model.UserImage != null)
+                    {
+                        <img src="~/images/@Model.UserImage" class="rounded-circle" style="width: 100%" asp-append-version="true" />
+                    }
+                    else
+                    {
+                        <img src="~/images/no-image.jpeg" class="image" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+
+                    }
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-10 box2">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-5 p-0">
                             @{
                                 var user = await userManager.FindByIdAsync(Model.AppUserId.ToString());
                             }
@@ -35,7 +44,7 @@
                     </div>
                     <div class="row">
                         <a asp-controller="Post" asp-action="Details" asp-route-id="@Model.Id">
-                            <div class="col-md-12">
+                            <div class="col-md-12 details">
                                 <div class="py-2">
                                     <p class="mb-0">@Model.Prediction</p>
                                     <p>@Model.Location</p>
@@ -49,19 +58,36 @@
                     <div class="row">
                         <form method="post" style="width: 100%">
                             <div class="row">
-                                <div class="col-sm-3 col-md-3">
+                                <div class="col-3">
                                     <a>
                                         <i class="fa fa-comment"></i>
-                                        <span style="font-size: 14px">@Model.Comments.Count()</span>
+                                        <span style="font-size: 14px">@Model.PostComments.Count()</span>
                                     </a>
                                 </div>
-                                <div class="col-sm-3 col-md-3">
-                                    <a><i class="fa fa-heart"></i></a>
+                                <div class="col-3">
+                                    <label for="submit_@Model.Id">
+                                        @{
+                                            var liked = _fixtures.HasLiked(Model.Id, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                                        }
+                                        @if (liked != null)
+                                        {
+                                            <i class="fa fa-heart liked" id="submit_@Model.Id" onclick="onLike(event)">
+                                                <span>@_fixtures.GetCount(Model.Id)</span>
+                                            </i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa fa-heart" id="submit_@Model.Id" onclick="onLike(event)">
+                                                <span>@_fixtures.GetCount(Model.Id)</span>
+                                            </i>
+                                        }
+
+                                    </label>
                                 </div>
-                                <div class="col-sm-3 col-md-3">
+                                <div class="col-3">
                                     <a><i class="fa fa-facebook"></i></a>
                                 </div>
-                                <div class="col-sm-3 col-md-3">
+                                <div class="col-3">
                                     <a><i class="fa fa-twitter"></i></a>
                                 </div>
                             </div>
@@ -83,20 +109,29 @@
         </div>
 
 
-        @foreach (var comment in Model.Comments)
+        @foreach (var comment in Model.PostComments)
         {
             <div class="card py-2 mt-2">
                 <div class="row">
-                    <div class="col-md-2">
-                        <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                    <div class="col-md-2 box1">
+                        @if (comment.UserImage != null)
+                        {
+                            <img src="~/images/@Model.UserImage" class="rounded-circle" style="width: 100%" asp-append-version="true" />
+                        }
+                        else
+                        {
+                            <img src="~/images/no-image.jpeg" class="image" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+
+                        }
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 box2">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5 p-0">
                                 @{
                                     var commenter = await userManager.FindByIdAsync(comment.AppUserId.ToString());
                                 }
                                 <a asp-controller="Profile" asp-action="Index" asp-route-id="@comment.AppUserId"> @commenter.UserName.Split('@')[0]</a>
+                                <p class="timestamp">@comment.Time</p>
                             </div>
                             <div class="col-md-7 float-right px-1">
                                 <span class="bg-success">W</span>
@@ -110,7 +145,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 p-0">
                                 <span>@comment.Message</span>
                             </div>
                         </div>

@@ -20,5 +20,7 @@ namespace _9jaTips.Web.ViewModels
         public string Thoughts { get; set; }
 
         public string TimeStamp { get; set; }
+
+        public string UserImage { get; set; }
     }
 }

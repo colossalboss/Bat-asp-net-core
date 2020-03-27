@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using _9jaTips.Entities;
 using _9jaTips.Services.Interfaces;
+using _9jaTips.Web.ViewModels;
+using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +16,12 @@ namespace _9jaTips.Web.Controllers
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> userManager;
-        private readonly IFixtures _fixture;
+        private readonly IFixtures _fixtures;
 
         public ProfileController(UserManager<AppUser> userManager, IFixtures fixture)
         {
             this.userManager = userManager;
-            _fixture = fixture;
+            _fixtures = fixture;
         }
 
         // GET: /<controller>/
@@ -27,20 +29,40 @@ namespace _9jaTips.Web.Controllers
         {
             var user = await userManager.FindByIdAsync(id.ToString());
 
-            var usersPost = _fixture.GetUsersPost(id);
+            var posts = _fixtures.GetUsersPost(id);
+
+            var userPosts = new List<ListPostViewModel>();
+
+            foreach(var post in posts)
+            {
+                var poster = await userManager.FindByIdAsync(post.AppUserId.ToString());
+                var up = new ListPostViewModel
+                {
+                    PostDate = post.PostDate.Humanize(),
+                    Comments = post.Comments,
+                    Fixture = _fixtures.GetMatchById(post.MatchId),
+                    Id = post.Id,
+                    Image = poster.Image,
+                    Thoughts = post.Thoughts,
+                    Tip = post.Tip,
+                    UserId = post.AppUserId
+                };
+                userPosts.Add(up);
+            }
+
+            ProfileDetailsViewModel model = new ProfileDetailsViewModel
+            {
+                User = user,
+                Posts = userPosts
+            };
 
             if (user != null)
             {
                 //Instantiate and return ProfileVM
-                user.Posts = usersPost;
-                return View(user);
+                return View(model);
             }
 
             return NotFound();
         }
-
-
-
-
     }
 }

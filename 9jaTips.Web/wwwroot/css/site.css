@@ -76,3 +76,59 @@ body {
     max-width: 100%;
     margin: auto;
 }
+
+.liked {
+    color: #0366d6 !important;
+}
+
+.timestamp {
+    font-style: italic;
+    font-size: smaller;
+}
+
+#main .row a {
+    text-decoration: none;
+    color: #000 !important;
+    width: 100%;
+}
+
+#main .row a:hover {
+    background-color: #00000014;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 420px) {
+    #leagues,
+    #standings {
+        display: none !important;
+    }
+
+    img {
+        width: 100% !important;
+        margin: auto !important;
+    }
+
+    .box1 {
+        width: 20%;
+    }
+
+    .box2 {
+        width: 80%;
+    }
+
+    .box2 a {
+        width: 100% !important;
+    }
+
+    .details {
+        padding: 0!important;
+    }
+
+    .profile-img {
+        width: 80%;
+        margin: auto;
+    }
+}

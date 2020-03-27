@@ -83,7 +83,7 @@ namespace _9jaTips.Services.Repositories
 
         public List<Post> GetUsersPost(Guid id)
         {
-            return _db.AllPosts.Where(p => p.AppUserId == id).ToList();
+            return _db.AllPosts.Where(p => p.AppUserId == id).Include(p => p.Comments).ToList();
         }
 
 
@@ -109,14 +109,19 @@ namespace _9jaTips.Services.Repositories
             return _db.AllLikes.Where(p => p.PostId == id).Count();
         }
 
-        public bool HasLiked(Guid postId, Guid userId)
+        public Like HasLiked(Guid postId, Guid userId)
         {
             var like = _db.AllLikes.Where(l => l.PostId == postId && l.UserId == userId).ToList();
-            if (like.Count() == 0)
-            {
-                return false;
-            }
-            return true;
+            return like.FirstOrDefault(p => p.PostId == postId);
         }
+
+        public Like Unlike(Guid id, Guid userId)
+        {
+            var unliked = _db.AllLikes.FirstOrDefault(l => l.PostId == id && l.UserId == userId);
+            _db.Remove(unliked);
+            _db.SaveChanges();
+            return unliked;
+        }
+
     }
 }

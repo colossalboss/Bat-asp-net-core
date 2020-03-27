@@ -9,6 +9,8 @@ using _9jaTips.Web.Models;
 using _9jaTips.Services.Interfaces;
 using _9jaTips.Web.ViewModels;
 using Humanizer;
+using Microsoft.AspNetCore.Identity;
+using _9jaTips.Entities;
 
 namespace _9jaTips.Web.Controllers
 {
@@ -16,14 +18,16 @@ namespace _9jaTips.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IFixtures _fixtures;
+        private readonly UserManager<AppUser> userManager;
 
-        public HomeController(ILogger<HomeController> logger, IFixtures fixtures)
+        public HomeController(ILogger<HomeController> logger, IFixtures fixtures, UserManager<AppUser> userManager)
         {
             _logger = logger;
             _fixtures = fixtures;
+            this.userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var posts = _fixtures.GetAllPosts();
 
@@ -31,6 +35,7 @@ namespace _9jaTips.Web.Controllers
 
             foreach (var post in posts)
             {
+                var user = await userManager.FindByIdAsync(post.AppUserId.ToString());
                 var model = new ListPostViewModel
                 {
                     Fixture = _fixtures.GetMatchById(post.MatchId),
@@ -39,7 +44,8 @@ namespace _9jaTips.Web.Controllers
                     Tip = post.Tip,
                     UserId = post.AppUserId,
                     PostDate = post.PostDate.Humanize(),
-                    Comments = post.Comments
+                    Comments = post.Comments,
+                    Image = user.Image
                 };
                 modelList.Add(model);
             }

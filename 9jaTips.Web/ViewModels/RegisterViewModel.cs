@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace _9jaTips.Web.ViewModels
 {
@@ -22,5 +23,8 @@ namespace _9jaTips.Web.ViewModels
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Password and confirm password do not match")]
         public string ConfrimPassword { get; set; }
+
+        [Display(Name = "Profile Picture")]
+        public IFormFile ProfileImage { get; set; }
     }
 }

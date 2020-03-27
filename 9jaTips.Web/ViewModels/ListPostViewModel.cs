@@ -18,6 +18,8 @@ namespace _9jaTips.Web.ViewModels
 
         public string PostDate { get; set; }
 
+        public string Image { get; set; }
+
         public List<Comment> Comments { get; set; }
     }
 }

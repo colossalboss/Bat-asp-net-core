@@ -10,6 +10,8 @@ namespace _9jaTips.Entities
         {
         }
 
+        public string Image { get; set; }
+
         public List<Post> Posts { get; set; }
     }
 }

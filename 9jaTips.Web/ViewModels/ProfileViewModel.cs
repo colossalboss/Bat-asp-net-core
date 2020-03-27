@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _9jaTips.Entities;
 
 namespace _9jaTips.Web.ViewModels
@@ -9,6 +10,6 @@ namespace _9jaTips.Web.ViewModels
         {
         }
 
-        
+        public List<Post> UserPosts { get; set; }
     }
 }

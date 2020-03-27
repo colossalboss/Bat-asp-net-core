@@ -4,23 +4,71 @@
 // Write your JavaScript code.
 
 
-//$(document).ready(function () {
     class Comment {
-        constructor(message, userId, postId) {
-            this.message = message;
-            this.appUserId = userId;
+        constructor(message, postId) {
+            this.message = message; 
             this.postId = postId;
         }
     }
 
-const onSave = (id) => {
-        
-        const message = document.querySelector("#comment").value;
-        const userId = document.querySelector("#commenterId").value;
+class Like {
+    constructor(postId, userId) {
+        this.postId = postId;
+    }
+}
 
-    const comment = new Comment(message, userId, id);
-    console.log(comment);
+const onLike = (e) => {
+    e.preventDefault()
+    let postId = null;
+    if (!e.target.id) {
+        postId = e.target.parentElement.id.split('_')[1];
+    } else {
+        postId = e.target.id.split('_')[1];
+    }
     
+    const like = new Like(postId)
+
+    $.ajax({
+        url: "/post/like",
+        method: "POST",
+        dataType: "json",
+        data: like,
+        success: function (response) {
+            console.log(response)
+            console.log(e.target)
+            if (response.data) {
+                if (response.added) {
+                    e.target.classList.add('liked');
+                    if (e.target.textContent) {
+                        e.target.textContent = Number(e.target.textContent) + 1;
+                    } else {
+                        e.target.textContent = 1;
+                    }
+                } else if (response.removed) {
+                    e.target.classList.remove('liked');
+                    if (e.target.textContent) {
+                        e.target.textContent = Number(e.target.textContent) - 1;
+                    } else {
+                        e.target.textContent = "";
+                    }
+                }
+            }
+        }
+    })
+    //location.href = location.href;
+    console.log(postId)
+}
+
+const onSave = () => {
+    $(document).ready(function () {
+        const id = document.querySelector(".id").value;
+        const count = document.querySelector(`#count_${id}`);
+        const message = document.querySelector("#comment").value;
+        
+
+        const comment = new Comment(message, id);
+        console.log(comment);
+
         $.ajax({
             url: "/post/postcomment",
             method: "POST",
@@ -29,45 +77,62 @@ const onSave = (id) => {
             success: function (response) {
                 if (response.success) {
                     console.log(response);
+
+                    console.log(count);
+
+                    count.textContent = Number(count.textContent) + 1;
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(errorThrown);
             }
         });
-    console.log("Hi")
-    }
+    })
+}
 
+$("#saveComment").on('submit', function (event) {
+    console.log(event.target)
+    onReady(event);
+})
 
-    function loadData(e) {
-        let id = e.target.id;
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            console.log(event.target);
-            var modal = $(this)
-            $.ajax({
-                url: "/post/getone/" + id,
-                method: "GET",
-                dataType: "json",
-                success: function (response) {
-                    if (response.success) {
-                        modal.find('.modal-title').text(response.data.userName);
-                        modal.find('.username').text(response.data.userName)
-                        modal.find('.match-tip').text(response.data.tip);
-                        modal.find('.location').val(response.data.location)
-                        modal.find('.thoughts').text(response.data.thoughts);
-                        modal.find('.time').text(response.data.timeStamp)
-                    }
+function loadData(e) {
+    //let id = e.target.id;
+    console.log(e.target.id)
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        let modal = $(this)
+        modal.find('#comment').val("");
+        $.ajax({
+            url: "/post/getone/" + e.target.id,
+            method: "GET",
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                if (response.success) {
+                    modal.find('.modal-title').text(response.data.userName);
+                    modal.find('.username').text(response.data.userName)
+                    modal.find('.match-tip').text(response.data.tip);
+                    modal.find('.location').val(response.data.location)
+                    modal.find('.thoughts').text(response.data.thoughts);
+                    modal.find('.time').text(response.data.timeStamp)
+                    modal.find('.id').val(response.data.id)
+                    //modal.find('.image').html(`<img src="~/images/${response.data.userImage}" class="rounded-circle" style="width: 100%" asp-append-version="true" />`)
                 }
-            });
+            }
+        });
+    })
+}
 
-            //document.querySelector("#saveComment").addEventListener("submit", (event) => {
-            document.querySelector("#saveBtn").addEventListener("click", (event) => {
-                event.preventDefault();
-                console.log(id)
-                $("#exampleModal").modal('hide');
-                $('#exampleModal').data('modal', null);
-                onSave(id);
-            });
-        })
-    }
-//});
+function onReady(e) {
+    event.preventDefault();
+    console.log(e.target.id)
+    $("#exampleModal").modal('hide');
+    onSave();
+}
+
+//$('#exampleModal').on('hidden.bs.modal', function (e) {
+//    //$(this).find('form').trigger('reset');
+//    //$(this).modal('dispose');
+//    console.log("destroyed");
+//})
+

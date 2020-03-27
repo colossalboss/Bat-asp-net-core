@@ -1,10 +1,11 @@
-﻿@model AppUser
+﻿@model ProfileDetailsViewModel
 @inject UserManager<AppUser> userManager
-@inject IFixtures _fixture
+@inject SignInManager<AppUser> signInManager
+@inject IFixtures _fixtures
 
 @{
     ViewData["Title"] = "Profile Page";
-    var user = await userManager.FindByIdAsync(Model.Id);
+    var user = await userManager.FindByIdAsync(Model.User.Id);
 }
 
 
@@ -15,12 +16,19 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6">
-                                <img src="https://via.placeholder.com/150" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                            <div class="col-md-12 profile-img">
+                                @if (Model.User.Image != null)
+                                {
+                                    <img src="~/images/@Model.User.Image" class="rounded-circle" asp-append-version="true" style="width: 100%" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/no-image.jpeg" class="image" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                                }
                             </div>
                         </div>
                         <h4 class="card-title">Ogbara Gerrald</h4>
-                        <p>#@Model.UserName.Split("@")[0]</p>
+                        <p>#@Model.User.UserName.Split("@")[0]</p>
                     </div>
                     <div class="col-md-4">
                         <a class="btn btn-primary text-light float-right">Edit Profile</a>
@@ -86,8 +94,10 @@
                     </div>
                     <div class="col-md-10">
                         <div class="row">
-                            <div class="col-md-5">
-                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model.Id"> @user.UserName.Split('@')[0]</a>
+                            <div class="col-md-5 p-0">
+                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@post.UserId"> @user.UserName.Split('@')[0]</a>
+                                <p class="timestamp">@post.PostDate.Humanize()</p>
+
                             </div>
                             <div class="col-md-7 float-right px-1">
                                 <span class="bg-success">W</span>
@@ -100,15 +110,14 @@
                                 <span class="bg-success">W</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row ">
                             <a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">
-                                <div class="col-md-12">
+                                <div class="col-md-12 p-0">
                                     <div class="py-2">
-                                        <p class="mb-0">@_fixture.GetMatchById(post.MatchId).Home vs @_fixture.GetMatchById(post.MatchId).Home #@post.Tip</p>
-                                        <p>@_fixture.GetMatchById(post.MatchId).League in @_fixture.GetMatchById(post.MatchId).Country</p>
+                                        <p class="mb-0">@post.Fixture.Home vs @post.Fixture.Away #@post.Tip</p>
+                                        <p>@post.Fixture.League in @post.Fixture.Country</p>
                                     </div>
                                     <p class="mb-0">@post.Thoughts</p>
-                                    <span style="font-size: 12px">@post.PostDate</span>
                                 </div>
                             </a>
                         </div>
@@ -116,18 +125,41 @@
                         <div class="row">
                             <form method="post" style="width: 100%">
                                 <div class="row">
-                                    <div class="col-sm-3 col-md-3">
+                                    <div class="col-3">
                                         <a data-toggle="modal" data-target="#exampleModal">
                                             <i class="fa fa-comment" id="@post.Id" onclick="loadData(event)"></i>
                                         </a>
+                                        <span id="count_@post.Id">@post.Comments.Count()</span>
+
                                     </div>
-                                    <div class="col-sm-3 col-md-3">
-                                        <a><i class="fa fa-heart"></i></a>
+                                    <div class="col-3">
+                                        <input type="submit" id="submit_@post.Id" value="@post.Id" style="display: none" />
+                                        @if (signInManager.IsSignedIn(User))
+                                        {
+                                            <label for="submit_@post.Id">
+                                                @{
+                                                    var liked = _fixtures.HasLiked(post.Id, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                                                }
+                                                @if (liked != null)
+                                                {
+                                                    <i class="fa fa-heart liked" id="submit_@post.Id" onclick="onLike(event)">
+                                                        <span>@_fixtures.GetCount(post.Id)</span>
+                                                    </i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-heart" id="submit_@post.Id" onclick="onLike(event)">
+                                                        <span>@_fixtures.GetCount(post.Id)</span>
+                                                    </i>
+                                                }
+
+                                            </label>
+                                        }
                                     </div>
-                                    <div class="col-sm-3 col-md-3">
+                                    <div class="col-3">
                                         <a><i class="fa fa-facebook"></i></a>
                                     </div>
-                                    <div class="col-sm-3 col-md-3">
+                                    <div class="col-3">
                                         <a><i class="fa fa-twitter"></i></a>
                                     </div>
                                 </div>
@@ -137,5 +169,76 @@
                 </div>
             </div>
         }
+    </div>
+</div>
+
+@*-----Modal-----*@
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="saveComment" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card py-2">
+                        <div class="row">
+                            <div class="col-md-2 image">
+                                <img src="~/images/no-image.jpeg" class="image" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <a asp-controller="Profile" asp-action="Index" class="username" asp-route-id="post.UserId">UserName</a>
+                                    </div>
+                                    <div class="col-md-7 float-right px-1">
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                        <span class="bg-success">W</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <a asp-controller="Post" asp-action="Details" asp-route-id="post.Id">
+                                        <div class="col-md-12">
+                                            <div class="py-2">
+                                                <p class="mb-0 match-tip"></p>
+                                                <p class="location"></p>
+                                            </div>
+                                            <p class="mb-0 thoughts">post.Thoughts</p>
+                                            <span style="font-size: 12px" class="time"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="hidden" class="id" />
+                                        <textarea id="comment" rows="6" placeholder="Your comment" style="width: 100%"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="saveBtn">Save changes</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

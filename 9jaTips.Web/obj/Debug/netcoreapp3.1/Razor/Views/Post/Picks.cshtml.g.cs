@@ -61,8 +61,15 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 8 "/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Views/_ViewImports.cshtml"
+using Humanizer;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"21a96137a5a9a675e0e26c022f66fe31bb1f74e8", @"/Views/Post/Picks.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0383dc23fb32a62056a995788529805e8674d45f", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cfc94fa66321aa62eca9c15f5d47a27955677fed", @"/Views/_ViewImports.cshtml")]
     public class Views_Post_Picks : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Match>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Fixtures", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -124,7 +131,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                <span class=\"float-right\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e810145", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e810311", async() => {
                 WriteLiteral("Back");
             }
             );
@@ -176,7 +183,7 @@ using Microsoft.AspNetCore.Identity;
             <div class=""card-body  py-0"">
                 <ul class=""list-group"">
                     <li class=""list-group-item mt-2"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e813465", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e813631", async() => {
                 WriteLiteral("Home");
             }
             );
@@ -213,7 +220,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e816224", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e816390", async() => {
                 WriteLiteral("Draw");
             }
             );
@@ -250,7 +257,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e818983", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e819149", async() => {
                 WriteLiteral("Away");
             }
             );
@@ -298,7 +305,7 @@ using Microsoft.AspNetCore.Identity;
             <div class=""card-body py-0"">
                 <ul class=""list-group"">
                     <li class=""list-group-item mt-2"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e822016", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e822182", async() => {
                 WriteLiteral("Home or Draw");
             }
             );
@@ -335,7 +342,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e824783", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e824949", async() => {
                 WriteLiteral("Home or Away");
             }
             );
@@ -372,7 +379,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e827550", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e827716", async() => {
                 WriteLiteral("Draw or Away");
             }
             );
@@ -420,7 +427,7 @@ using Microsoft.AspNetCore.Identity;
             <div class=""card-body py-0"">
                 <ul class=""list-group"">
                     <li class=""list-group-item mt-2"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e830596", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e830762", async() => {
                 WriteLiteral("Under 2.5");
             }
             );
@@ -457,7 +464,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e833360", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e833526", async() => {
                 WriteLiteral("Over 2.5");
             }
             );
@@ -505,7 +512,7 @@ using Microsoft.AspNetCore.Identity;
             <div class=""card-body py-0"">
                 <ul class=""list-group"">
                     <li class=""list-group-item mt-2"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e836405", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e836571", async() => {
                 WriteLiteral("GG");
             }
             );
@@ -542,7 +549,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e839164", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e839330", async() => {
                 WriteLiteral("NG");
             }
             );
@@ -590,7 +597,7 @@ using Microsoft.AspNetCore.Identity;
             <div class=""card-body py-0"">
                 <ul class=""list-group"">
                     <li class=""list-group-item mt-2"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e842195", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e842361", async() => {
                 WriteLiteral("Home");
             }
             );
@@ -627,7 +634,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e844956", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e845122", async() => {
                 WriteLiteral("Away");
             }
             );
@@ -675,7 +682,7 @@ using Microsoft.AspNetCore.Identity;
             <div class=""card-body py-0"">
                 <ul class=""list-group"">
                     <li class=""list-group-item mt-2"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e847991", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e848157", async() => {
                 WriteLiteral("1 - 0");
             }
             );
@@ -712,7 +719,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e850753", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e850919", async() => {
                 WriteLiteral("2 - 0");
             }
             );
@@ -749,7 +756,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n                    <li class=\"list-group-item mt-2\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e853515", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21a96137a5a9a675e0e26c022f66fe31bb1f74e853681", async() => {
                 WriteLiteral("0 - 1");
             }
             );
