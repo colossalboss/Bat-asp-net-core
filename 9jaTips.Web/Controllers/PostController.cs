@@ -7,6 +7,7 @@ using _9jaTips.Entities;
 using _9jaTips.Services.Interfaces;
 using _9jaTips.Web.ViewModels;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace _9jaTips.Web.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private readonly IFixtures _fixtures;
@@ -42,6 +44,35 @@ namespace _9jaTips.Web.Controllers
                     Tip = post.Tip,
                     UserId = post.AppUserId
                 };
+                modelList.Add(model);
+            }
+            return View(modelList);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> FilterPost(string country)
+        {
+            var posts = _fixtures.GetCountryPosts(country);
+
+            var modelList = new List<ListPostViewModel>();
+
+            ViewBag.Country = country;
+
+            foreach (var post in posts)
+            {
+                var user = await userManager.FindByIdAsync(post.AppUserId.ToString());
+                var model = new ListPostViewModel
+                {
+                    Fixture = _fixtures.GetMatchById(post.MatchId),
+                    Id = post.Id,
+                    Thoughts = post.Thoughts,
+                    Tip = post.Tip,
+                    UserId = post.AppUserId,
+                    PostDate = post.PostDate.Humanize(),
+                    Comments = post.Comments,
+                    Image = user.Image
+                };
+                
                 modelList.Add(model);
             }
             return View(modelList);
@@ -90,6 +121,7 @@ namespace _9jaTips.Web.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {

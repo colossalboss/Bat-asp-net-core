@@ -96,14 +96,19 @@ $("#saveComment").on('submit', function (event) {
 })
 
 function loadData(e) {
-    //let id = e.target.id;
-    console.log(e.target.id)
+    let id = e.target.id;
+    if (e.target.nodeName !== 'A') {
+        id = e.target.parentElement.id;
+    }
+    console.log(id, 'id')
+    console.log(e.target)
 
-    $('#exampleModal').on('show.bs.modal', function (event) {
+    $('#exampleModal').on('shown.bs.modal', function (event) {
         let modal = $(this)
         modal.find('#comment').val("");
+        $('#comment').focus();
         $.ajax({
-            url: "/post/getone/" + e.target.id,
+            url: "/post/getone/" + id,
             method: "GET",
             dataType: "json",
             success: function (response) {

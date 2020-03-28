@@ -100,10 +100,14 @@ i:hover {
     cursor: pointer;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 768px) {
     #leagues,
     #standings {
         display: none !important;
+    }
+
+    .row {
+        margin: 0 !important;
     }
 
     img {
@@ -128,7 +132,7 @@ i:hover {
     }
 
     .profile-img {
-        width: 80%;
+        width: 60%;
         margin: auto;
     }
 }

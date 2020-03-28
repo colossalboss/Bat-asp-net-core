@@ -30,6 +30,21 @@ namespace _9jaTips.Services.Repositories
             return _db.AllPosts.Include(p => p.Comments).ToList();
         }
 
+        public List<Post> GetCountryPosts(string country)
+        {
+            var posts = _db.AllPosts.Include(p => p.Comments).ToList();
+            var targetPosts = new List<Post>();
+            foreach(var post in posts)
+            {
+                var match = _db.AllMatches.FirstOrDefault(m => m.MatchId == post.MatchId);
+                if (match.Country == country)
+                {
+                    targetPosts.Add(post);
+                }
+            }
+            return targetPosts;
+        }
+
         public List<string> GetCountries()
         {
             var matches = _db.AllMatches.ToList();

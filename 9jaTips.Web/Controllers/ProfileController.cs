@@ -6,6 +6,7 @@ using _9jaTips.Entities;
 using _9jaTips.Services.Interfaces;
 using _9jaTips.Web.ViewModels;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace _9jaTips.Web.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> userManager;

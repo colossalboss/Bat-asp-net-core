@@ -40,6 +40,7 @@ namespace _9jaTips.Web
 
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddAuthorization();
             
         }
 

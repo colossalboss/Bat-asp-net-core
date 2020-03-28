@@ -17,6 +17,7 @@ namespace _9jaTips.Services.Interfaces
         Post GetOnePost(Guid id);
         Post AddPost(Post post);
         List<Post> GetAllPosts();
+        List<Post> GetCountryPosts(string country);
 
         Comment AddComment(Comment comment);
 

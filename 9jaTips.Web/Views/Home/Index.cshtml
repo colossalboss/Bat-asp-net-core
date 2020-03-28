@@ -9,6 +9,19 @@
 
 <div class="row">
     <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Home
+                </h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" style="height: 100vh; overflow-y: scroll">
+    <div class="col-md-12">
 
         @for (var i = 0; i < Model.Count; i++)
         {
@@ -35,7 +48,7 @@
                                 <p class="timestamp">@Model[i].PostDate</p>
 
                             </div>
-                            <div class="col-md-7 float-right px-1">
+                            <div class="col-md-7 text-md-right px-1">
                                 <span class="bg-success">W</span>
                                 <span class="bg-success">W</span>
                                 <span class="bg-success">W</span>

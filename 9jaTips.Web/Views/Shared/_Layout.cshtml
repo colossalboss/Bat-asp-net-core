@@ -25,21 +25,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         @if (signInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <form class="nav-link btn btn-link py-0" asp-area="" asp-controller="Account" asp-action="Logout">
-                                    <button type="submit" class="nav-link text-dark" style="width: 100%">Logout @User.Identity.Name</button>
+                                <form class="nav-link py-0" asp-area="" asp-controller="Account" asp-action="Logout">
+                                    <button type="submit" class="nav-link bg-light text-dark border-0" style="width: 100%">Logout</button>
+                                    
                                 </form>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Countries">Post</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">@User.FindFirstValue(ClaimTypes.Name).Split('@')[0]</a>
                             </li>
                         }
                         else
@@ -61,34 +63,34 @@
         <main role="main" class="pb-3">
 
             <div class="row">
-                <div class="col-md-3" id="leagues">
+                <div class="col-lg-3" id="leagues">
                     <div class="card">
                         <div class="card-header">
                             Leagues
                         </div>
                         <div class="card-body">
                             <ul class="list-group">
-                                <li class="list-group-item">EPL</li>
-                                <li class="list-group-item">La Liga</li>
-                                <li class="list-group-item">Bundesliga</li>
-                                <li class="list-group-item">Eredivisie</li>
-                                <li class="list-group-item">Ligue 1</li>
-                                <li class="list-group-item">Serie A</li>
-                                <li class="list-group-item">NPFL</li>
-                                <li class="list-group-item">ABSA</li>
-                                <li class="list-group-item">Super League</li>
-                                <li class="list-group-item">Champions League</li>
-                                <li class="list-group-item">Europa</li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="England">EPL</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="Spain">La Liga</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="Germany">Bundesliga</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="Netherland">Eredivisie</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="Italy">Serie A</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="France">Ligue 1</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="Nigeria">NPFL</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="South Africa">ABSA</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="Belgium">Super League</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="International">Champions League</a></li>
+                                <li class="list-group-item"><a asp-controller="Post" asp-action="FilterPost" asp-route-country="Belgium">Pro League</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6" id="main">
+                <div class="col-md-12 col-lg-6" id="main">
                     @RenderBody()
                 </div>
 
-                <div class="col-md-3" id="standings">
+                <div class="col-lg-3" id="standings">
                     <div class="card">
                         <div class="card-header">
                             Standings
