@@ -22,98 +22,109 @@
             @for (var i = 0; i < Model.Count; i++)
             {
                 <div class="card py-2 mt-2">
-                    <div class="row main">
-                        <div class="col-md-2 box1">
-                            @if (Model[i].Image != null)
-                            {
-                                <img src="~/images/@Model[i].Image" class="rounded-circle" style="width: 100%" asp-append-version="true" />
-                            }
-                            else
-                            {
-                                <img src="~/images/no-image.jpeg" class="image" style="border-radius: 50%; width: 100%" asp-append-version="true" />
 
-                            }
-                        </div>
-                        <div class="col-md-10 p-0 box2">
-                            <div class="row">
-                                <div class="col-md-5 p-0">
-                                    @{
-                                        var user = await userManager.FindByIdAsync(Model[i].UserId.ToString());
-                                    }
-                                    <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model[i].UserId"> @user.UserName.Split('@')[0]</a>
-                                    <p class="timestamp">@Model[i].PostDate</p>
+                    <div class="col-md-12">
+                        <div class="row main mx-0">
+                            <div class="col-md-2 box1">
+                                @if (Model[i].Image != null)
+                                {
+                                    <img src="~/images/@Model[i].Image" class="rounded-circle" style="width: 100%" asp-append-version="true" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/no-image.jpeg" class="image" style="border-radius: 50%; width: 100%" asp-append-version="true" />
 
-                                </div>
-                                <div class="col-md-7 text-md-right px-1">
-                                    <span class="bg-success">W</span>
-                                    <span class="bg-success">W</span>
-                                    <span class="bg-success">W</span>
-                                    <span class="bg-success">W</span>
-                                    <span class="bg-success">W</span>
-                                    <span class="bg-success">W</span>
-                                    <span class="bg-success">W</span>
-                                    <span class="bg-success">W</span>
-                                </div>
+                                }
                             </div>
-                            <div class="row ">
-                                <a asp-controller="Post" asp-action="Details" asp-route-id="@Model[i].Id">
-                                    <div class="col-md-12 details">
-                                        <div class="py-2">
-                                            <p class="mb-0">@Model[i].Fixture.Home vs @Model[i].Fixture.Away #@Model[i].Tip</p>
-                                            <p>@Model[i].Fixture.League in @Model[i].Fixture.Country</p>
-                                        </div>
-                                        <p class="mb-0">@Model[i].Thoughts</p>
+                            <div class="col-md-10 p-0 box2">
+                                <div class="row">
+                                    <div class="col-md-5 p-0">
+                                        @{
+                                            var user = await userManager.FindByIdAsync(Model[i].UserId.ToString());
+                                        }
+                                        <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model[i].UserId"> @user.UserName.Split('@')[0]</a>
+                                        <p class="timestamp">@Model[i].PostDate</p>
+
                                     </div>
-                                </a>
-                            </div>
-                            <hr />
-                            <div class="row">
-                                <form method="post" style="width: 100%" asp-route-postId="@Model[i].Id" asp-action="Like" asp-controller="Post">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <a data-toggle="modal" data-target="#exampleModal" id="@Model[i].Id" onclick="loadData(event)">
-                                                <i class="fa fa-comment"></i>
-                                                <span id="count_@Model[i].Id">@Model[i].Comments.Count()</span>
-
-                                            </a>
-
-                                        </div>
-                                        <div class="col-3">
-                                            <input type="submit" id="submit_@Model[i].Id" value="@Model[i].Id" style="display: none" />
-                                            @if (signInManager.IsSignedIn(User))
+                                    <div class="col-md-7 text-md-right px-1">
+                                        @foreach (var outcome in Model[i].Streak)
+                                        {
+                                            @if (outcome.ToLower() == "win")
                                             {
-                                                <label for="submit_@Model[i].Id">
-                                                    @{
-                                                        var liked = _fixtures.HasLiked(Model[i].Id, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
-                                                    }
-                                                    @if (liked != null)
-                                                    {
-                                                        <i class="fa fa-heart liked" id="submit_@Model[i].Id" onclick="onLike(event)">
-                                                            <span>@_fixtures.GetCount(Model[i].Id)</span>
-                                                        </i>
-                                                    }
-                                                    else
-                                                    {
-                                                        <i class="fa fa-heart" id="submit_@Model[i].Id" onclick="onLike(event)">
-                                                            <span>@_fixtures.GetCount(Model[i].Id)</span>
-                                                        </i>
-                                                    }
-
-                                                </label>
+                                                <span class="bg-success px-2" style="min-width:30px">W</span>
                                             }
-
-                                        </div>
-                                        <div class="col-3">
-                                            <a><i class="fa fa-facebook"></i></a>
-                                        </div>
-                                        <div class="col-3">
-                                            <a><i class="fa fa-twitter"></i></a>
-                                        </div>
+                                            else if (outcome.ToLower() == "lose")
+                                            {
+                                                <span class="bg-danger px-2" style="min-width:40px">L</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="bg-warning px-2" style="min-width:40px">P</span>
+                                            }
+                                        }
                                     </div>
-                                </form>
+                                </div>
+                                <div class="row ">
+                                    <a asp-controller="Post" asp-action="Details" asp-route-id="@Model[i].Id">
+                                        <div class="col-md-12 details px-0">
+                                            <div class="py-2">
+                                                <p class="mb-0">@Model[i].Fixture.Home vs @Model[i].Fixture.Away #@Model[i].Tip</p>
+                                                <p>@Model[i].Fixture.League in @Model[i].Fixture.Country</p>
+                                            </div>
+                                            <p class="mb-0">@Model[i].Thoughts</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <form method="post" style="width: 100%" asp-route-postId="@Model[i].Id" asp-action="Like" asp-controller="Post">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <a data-toggle="modal" data-target="#exampleModal" id="@Model[i].Id" onclick="loadData(event)">
+                                                    <i class="fa fa-comment"></i>
+                                                    <span id="count_@Model[i].Id">@Model[i].Comments.Count()</span>
+
+                                                </a>
+
+                                            </div>
+                                            <div class="col-3">
+                                                <input type="submit" id="submit_@Model[i].Id" value="@Model[i].Id" style="display: none" />
+                                                @if (signInManager.IsSignedIn(User))
+                                                {
+                                                    <label for="submit_@Model[i].Id">
+                                                        @{
+                                                            var liked = _fixtures.HasLiked(Model[i].Id, Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                                                        }
+                                                        @if (liked != null)
+                                                        {
+                                                            <i class="fa fa-heart liked" id="submit_@Model[i].Id" onclick="onLike(event)">
+                                                                <span>@_fixtures.GetCount(Model[i].Id)</span>
+                                                            </i>
+                                                        }
+                                                        else
+                                                        {
+                                                            <i class="fa fa-heart" id="submit_@Model[i].Id" onclick="onLike(event)">
+                                                                <span>@_fixtures.GetCount(Model[i].Id)</span>
+                                                            </i>
+                                                        }
+
+                                                    </label>
+                                                }
+
+                                            </div>
+                                            <div class="col-3">
+                                                <a><i class="fa fa-facebook"></i></a>
+                                            </div>
+                                            <div class="col-3">
+                                                <a><i class="fa fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             }
         }

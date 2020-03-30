@@ -100,15 +100,22 @@ i:hover {
     cursor: pointer;
 }
 
+.details {
+    padding: 0 !important;
+}
+
+.row,
+main {
+    margin: 0 !important;
+}
+
 @media screen and (max-width: 768px) {
     #leagues,
     #standings {
         display: none !important;
     }
 
-    .row {
-        margin: 0 !important;
-    }
+    
 
     img {
         width: 100% !important;
@@ -125,10 +132,6 @@ i:hover {
 
     .box2 a {
         width: 100% !important;
-    }
-
-    .details {
-        padding: 0!important;
     }
 
     .profile-img {

@@ -54,13 +54,14 @@ namespace _9jaTips.Web.Controllers
         {
             var posts = _fixtures.GetCountryPosts(country);
 
-            var modelList = new List<ListPostViewModel>();
-
             ViewBag.Country = country;
+
+            var modelList = new List<ListPostViewModel>();
 
             foreach (var post in posts)
             {
                 var user = await userManager.FindByIdAsync(post.AppUserId.ToString());
+                var streak = _fixtures.GetUserStreak(post.AppUserId);
                 var model = new ListPostViewModel
                 {
                     Fixture = _fixtures.GetMatchById(post.MatchId),
@@ -70,9 +71,9 @@ namespace _9jaTips.Web.Controllers
                     UserId = post.AppUserId,
                     PostDate = post.PostDate.Humanize(),
                     Comments = post.Comments,
-                    Image = user.Image
+                    Image = user.Image,
+                    Streak = streak
                 };
-                
                 modelList.Add(model);
             }
             return View(modelList);
@@ -134,6 +135,7 @@ namespace _9jaTips.Web.Controllers
 
             foreach(var comment in post.Comments)
             {
+                var streak = _fixtures.GetUserStreak(comment.AppUserId);
                 var pc = new CommentsViewModel
                 {
                     AppUserId = comment.AppUserId,
@@ -141,7 +143,7 @@ namespace _9jaTips.Web.Controllers
                     Message = comment.Message,
                     PostId = comment.PostId,
                     Time = comment.TimeStamp.Humanize(),
-
+                    Streak = streak
                 };
                 postComments.Add(pc);
             }
@@ -204,7 +206,8 @@ namespace _9jaTips.Web.Controllers
                     Tip = model.Tip,
                     Thoughts = model.Thoughts,
                     MatchId = model.MatchId,
-                    PostDate = DateTime.Now
+                    PostDate = DateTime.Now,
+                    Outcome = "Pending"
                 };
 
                 _fixtures.AddPost(post);

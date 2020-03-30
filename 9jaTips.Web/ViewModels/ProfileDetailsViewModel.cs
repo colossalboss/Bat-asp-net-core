@@ -12,6 +12,8 @@ namespace _9jaTips.Web.ViewModels
 
         public AppUser User { get; set; }
 
+        public List<string> UserStreak { get; set; }
+
         public List<ListPostViewModel> Posts { get; set; }
     }
 }

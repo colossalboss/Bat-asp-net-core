@@ -105,6 +105,7 @@ function loadData(e) {
 
     $('#exampleModal').on('shown.bs.modal', function (event) {
         let modal = $(this)
+        let streak = $('.streak');
         modal.find('#comment').val("");
         $('#comment').focus();
         $.ajax({
@@ -121,7 +122,6 @@ function loadData(e) {
                     modal.find('.thoughts').text(response.data.thoughts);
                     modal.find('.time').text(response.data.timeStamp)
                     modal.find('.id').val(response.data.id)
-                    //modal.find('.image').html(`<img src="~/images/${response.data.userImage}" class="rounded-circle" style="width: 100%" asp-append-version="true" />`)
                 }
             }
         });

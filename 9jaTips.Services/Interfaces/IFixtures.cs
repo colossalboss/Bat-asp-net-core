@@ -13,6 +13,7 @@ namespace _9jaTips.Services.Interfaces
 
         Post GetPostById(Guid id);
         List<Post> GetUsersPost(Guid id);
+        List<string> GetUserStreak(Guid id);
 
         Post GetOnePost(Guid id);
         Post AddPost(Post post);

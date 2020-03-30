@@ -5,7 +5,7 @@
 
 @{
     ViewData["Title"] = "Post details";
-
+    var streak = _fixtures.GetUserStreak(Model.AppUserId);
 }
 
 <div class="row">
@@ -32,14 +32,22 @@
                             <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model.AppUserId"> @user.UserName.Split('@')[0]</a>
                         </div>
                         <div class="col-md-7 text-md-right px-1">
-                            <span class="bg-success">W</span>
-                            <span class="bg-success">W</span>
-                            <span class="bg-success">W</span>
-                            <span class="bg-success">W</span>
-                            <span class="bg-success">W</span>
-                            <span class="bg-success">W</span>
-                            <span class="bg-success">W</span>
-                            <span class="bg-success">W</span>
+
+                            @foreach (var outcome in streak)
+                            {
+                                @if (outcome.ToLower() == "win")
+                                {
+                                    <span class="bg-success px-1" style="min-width:30px">W</span>
+                                }
+                                else if (outcome.ToLower() == "lose")
+                                {
+                                    <span class="bg-danger px-1" style="min-width:40px">L</span>
+                                }
+                                else
+                                {
+                                    <span class="bg-warning px-1" style="min-width:40px">P</span>
+                                }
+                            }
                         </div>
                     </div>
                     <div class="row">
@@ -134,14 +142,21 @@
                                 <p class="timestamp">@comment.Time</p>
                             </div>
                             <div class="col-md-7 text-md-right px-1">
-                                <span class="bg-success">W</span>
-                                <span class="bg-success">W</span>
-                                <span class="bg-success">W</span>
-                                <span class="bg-success">W</span>
-                                <span class="bg-success">W</span>
-                                <span class="bg-success">W</span>
-                                <span class="bg-success">W</span>
-                                <span class="bg-success">W</span>
+                                @foreach (var outcome in comment.Streak)
+                                {
+                                    @if (outcome.ToLower() == "win")
+                                    {
+                                        <span class="bg-success px-1" style="min-width:30px">W</span>
+                                    }
+                                    else if (outcome.ToLower() == "lose")
+                                    {
+                                        <span class="bg-danger px-1" style="min-width:40px">L</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="bg-warning px-1" style="min-width:40px">P</span>
+                                    }
+                                }
                             </div>
                         </div>
                         <div class="row">

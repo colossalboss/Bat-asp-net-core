@@ -31,11 +31,13 @@ namespace _9jaTips.Web.Controllers
         {
             var posts = _fixtures.GetAllPosts();
 
+
             var modelList = new List<ListPostViewModel>();
 
             foreach (var post in posts)
             {
                 var user = await userManager.FindByIdAsync(post.AppUserId.ToString());
+                var streak = _fixtures.GetUserStreak(post.AppUserId);
                 var model = new ListPostViewModel
                 {
                     Fixture = _fixtures.GetMatchById(post.MatchId),
@@ -45,7 +47,8 @@ namespace _9jaTips.Web.Controllers
                     UserId = post.AppUserId,
                     PostDate = post.PostDate.Humanize(),
                     Comments = post.Comments,
-                    Image = user.Image
+                    Image = user.Image,
+                    Streak = streak
                 };
                 modelList.Add(model);
             }

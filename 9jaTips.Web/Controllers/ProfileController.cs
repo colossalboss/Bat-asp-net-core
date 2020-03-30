@@ -33,11 +33,15 @@ namespace _9jaTips.Web.Controllers
 
             var posts = _fixtures.GetUsersPost(id);
 
+            var userStreak = _fixtures.GetUserStreak(id);
+
             var userPosts = new List<ListPostViewModel>();
 
             foreach(var post in posts)
             {
                 var poster = await userManager.FindByIdAsync(post.AppUserId.ToString());
+                var streak = _fixtures.GetUserStreak(post.AppUserId);
+
                 var up = new ListPostViewModel
                 {
                     PostDate = post.PostDate.Humanize(),
@@ -47,7 +51,8 @@ namespace _9jaTips.Web.Controllers
                     Image = poster.Image,
                     Thoughts = post.Thoughts,
                     Tip = post.Tip,
-                    UserId = post.AppUserId
+                    UserId = post.AppUserId,
+                    Streak = streak
                 };
                 userPosts.Add(up);
             }
@@ -55,7 +60,8 @@ namespace _9jaTips.Web.Controllers
             ProfileDetailsViewModel model = new ProfileDetailsViewModel
             {
                 User = user,
-                Posts = userPosts
+                Posts = userPosts,
+                UserStreak = userStreak
             };
 
             if (user != null)

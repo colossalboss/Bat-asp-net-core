@@ -21,5 +21,6 @@ namespace _9jaTips.Web.ViewModels
         public string Image { get; set; }
 
         public List<Comment> Comments { get; set; }
+        public List<string> Streak { get; set; }
     }
 }

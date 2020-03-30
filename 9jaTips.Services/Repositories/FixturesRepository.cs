@@ -101,6 +101,18 @@ namespace _9jaTips.Services.Repositories
             return _db.AllPosts.Where(p => p.AppUserId == id).Include(p => p.Comments).ToList();
         }
 
+        public List<string> GetUserStreak(Guid id)
+        {
+            var userPosts = _db.AllPosts.Where(p => p.AppUserId == id);
+            var list = new List<string>();
+
+            foreach(var post in userPosts)
+            {
+                list.Add(post.Outcome);
+            }
+            return list;
+        }
+
 
 
         // Comment
