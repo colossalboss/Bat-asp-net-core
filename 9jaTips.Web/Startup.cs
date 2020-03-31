@@ -30,10 +30,12 @@ namespace _9jaTips.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IFixtures, FixturesRepository>();
-            services.AddDbContext<AppDbContext>(
-                //option => option.UseSqlServer(Configuration.GetConnectionString("9jaTipsDB")
-                options => options.UseSqlServer(Configuration.GetConnectionString("9jaTipsDB"), b => b.MigrationsAssembly("9jaTips.Data")
-                ));
+            //services.AddDbContext<AppDbContext>(
+            //    //option => option.UseSqlServer(Configuration.GetConnectionString("9jaTipsDB")
+            //    options => options.UseSqlServer(Configuration.GetConnectionString("9jaTipsDB"), b => b.MigrationsAssembly("9jaTips.Data")
+            //    ));
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("9jaTips"));
+
 
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
