@@ -32,10 +32,13 @@ namespace _9jaTips.Web.Controllers
             var posts = _fixtures.GetAllPosts();
 
 
-            var modelList = new List<ListPostViewModel>();
+            var modelList = new SortedList<int, ListPostViewModel>();
+
+            var count = 0;
 
             foreach (var post in posts)
             {
+                
                 var user = await userManager.FindByIdAsync(post.AppUserId.ToString());
                 var streak = _fixtures.GetUserStreak(post.AppUserId);
                 var model = new ListPostViewModel
@@ -50,7 +53,8 @@ namespace _9jaTips.Web.Controllers
                     Image = user.Image,
                     Streak = streak
                 };
-                modelList.Add(model);
+                modelList.Add(count, model);
+                count++;
             }
             return View(modelList);
         }

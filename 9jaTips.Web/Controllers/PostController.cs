@@ -20,11 +20,13 @@ namespace _9jaTips.Web.Controllers
     {
         private readonly IFixtures _fixtures;
         private readonly UserManager<AppUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
 
-        public PostController(IFixtures fixtures, UserManager<AppUser> userManager)
+        public PostController(IFixtures fixtures, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _fixtures = fixtures;
             this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         // GET: /<controller>/
@@ -126,6 +128,10 @@ namespace _9jaTips.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
+            if (!signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("Index");
+            }
 
             var post = _fixtures.GetPostById(id);
             var match = _fixtures.GetMatchById(post.MatchId);
