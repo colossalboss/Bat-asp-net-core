@@ -11,3 +11,4 @@
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Data.pdb
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/bin/Debug/netcoreapp3.1/9jaTips.Entities.pdb
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.csproj.CopyComplete
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Services/obj/Debug/netcoreapp3.1/9jaTips.Services.csproj.CoreCompileInputs.cache

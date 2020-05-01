@@ -91,7 +91,7 @@
         {
             <div class="card py-2">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-2 px-1">
                         @if (Model.User.Image != null)
                         {
                             <img src="~/images/@Model.User.Image" class="rounded-circle" style="width: 100%" asp-append-version="true" />
@@ -102,10 +102,10 @@
 
                         }
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-10 px-1">
                         <div class="row">
                             <div class="col-md-5 p-0">
-                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@post.UserId"> @user.UserName.Split('@')[0]</a>
+                                <a class="user-name" asp-controller="Profile" asp-action="Index" asp-route-id="@post.UserId"> @user.UserName.Split('@')[0]</a>
                                 <p class="timestamp">@post.PostDate.Humanize()</p>
 
                             </div>
@@ -137,7 +137,7 @@
                                         <p class="mb-0">@post.Fixture.Home vs @post.Fixture.Away #@post.Tip</p>
                                         <p>@post.Fixture.League in @post.Fixture.Country</p>
                                     </div>
-                                    <p class="mb-0">@post.Thoughts</p>
+                                    <p class="mb-0 text-justify px-1">@post.Thoughts</p>
                                 </div>
                             </a>
                         </div>

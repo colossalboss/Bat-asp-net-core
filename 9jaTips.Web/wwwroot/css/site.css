@@ -54,13 +54,15 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    /*position: relative;*/
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    /*margin-bottom: 60px;*/
+    height: 100% !important; /*Added style*/
+    background: #cccccc14;
 }
 .footer {
   position: absolute;
@@ -72,18 +74,45 @@ body {
 
 /* My Styles 
 -------------------------------------------------- */
+
+#header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px !important;
+    z-index: 9;
+}
+
+header a {
+    /*color: #0366d6;*/
+    color: #fff !important;
+    font-weight: bold;
+}
+
+nav {
+    background: #007bffc9 !important;
+}
+
+#fluid {
+    padding-top: 56px !important;
+}
+
 .row {
     max-width: 100%;
     margin: auto;
 }
 
-.liked {
-    color: #0366d6 !important;
+#leagues,
+#standings,
+#main {
+    padding: .5rem 0;
 }
 
 .timestamp {
     font-style: italic;
-    font-size: smaller;
+    font-size: 10px;
+
 }
 
 #main .row a {
@@ -109,13 +138,37 @@ main {
     margin: 0 !important;
 }
 
+.row i {
+    color: #007bffc9;
+}
+
+.liked {
+    color: red !important;
+}
+
+.bg-light {
+    background: #fff !important;
+}
+
+.row .user-name {
+    color: red !important;
+    font-weight: bold;
+}
+
+.hidden-link {
+    display: none;
+}
+
+footer {
+    position: relative !important;
+    padding-bottom: .5rem !important;
+}
+
 @media screen and (max-width: 768px) {
     #leagues,
     #standings {
         display: none !important;
     }
-
-    
 
     img {
         width: 100% !important;
@@ -136,6 +189,31 @@ main {
 
     .profile-img {
         width: 60%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .logout {
+        width: auto !important;
+    }
+
+    .hidden-link {
+        display: block;
+    }
+
+    .container-fluid {
+        padding: 0.5rem !important;
+        width: 100%;
+    }
+
+    .col-md-12 {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .image-popup {
+        width: 50%;
         margin: auto;
     }
 }

@@ -25,7 +25,7 @@
 
                     <div class="col-md-12">
                         <div class="row main mx-0">
-                            <div class="col-md-2 box1">
+                            <div class="col-md-2 box1 px-1">
                                 @if (Model[i].Image != null)
                                 {
                                     <img src="~/images/@Model[i].Image" class="rounded-circle" style="width: 100%" asp-append-version="true" />
@@ -36,13 +36,13 @@
 
                                 }
                             </div>
-                            <div class="col-md-10 p-0 box2">
+                            <div class="col-md-10 p-0 box2 px-1">
                                 <div class="row">
                                     <div class="col-md-5 p-0">
                                         @{
                                             var user = await userManager.FindByIdAsync(Model[i].UserId.ToString());
                                         }
-                                        <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model[i].UserId"> @user.UserName.Split('@')[0]</a>
+                                        <a class="user-name" asp-controller="Profile" asp-action="Index" asp-route-id="@Model[i].UserId"> @user.UserName.Split('@')[0]</a>
                                         <p class="timestamp">@Model[i].PostDate</p>
 
                                     </div>
@@ -71,7 +71,7 @@
                                                 <p class="mb-0">@Model[i].Fixture.Home vs @Model[i].Fixture.Away #@Model[i].Tip</p>
                                                 <p>@Model[i].Fixture.League in @Model[i].Fixture.Country</p>
                                             </div>
-                                            <p class="mb-0">@Model[i].Thoughts</p>
+                                            <p class="mb-0 text-justify px-1">@Model[i].Thoughts</p>
                                         </div>
                                     </a>
                                 </div>

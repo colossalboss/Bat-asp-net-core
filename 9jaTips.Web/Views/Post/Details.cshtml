@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <div class="card py-2">
             <div class="row">
-                <div class="col-md-2 box1">
+                <div class="col-md-2 box1 px-1">
                     @if (Model.UserImage != null)
                     {
                         <img src="~/images/@Model.UserImage" class="rounded-circle" style="width: 100%" asp-append-version="true" />
@@ -23,13 +23,13 @@
 
                     }
                 </div>
-                <div class="col-md-10 box2">
+                <div class="col-md-10 box2 px-1">
                     <div class="row">
                         <div class="col-md-5 p-0">
                             @{
                                 var user = await userManager.FindByIdAsync(Model.AppUserId.ToString());
                             }
-                            <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model.AppUserId"> @user.UserName.Split('@')[0]</a>
+                            <a class="user-name" asp-controller="Profile" asp-action="Index" asp-route-id="@Model.AppUserId"> @user.UserName.Split('@')[0]</a>
                         </div>
                         <div class="col-md-7 text-md-right px-1">
 
@@ -58,7 +58,7 @@
                                     <p>@Model.Location</p>
                                 </div>
                                 <p class="mb-0">@Model.Thoughts</p>
-                                <span style="font-size: 12px">@Model.TimeStamp</span>
+                                <span class="timestamp" style="font-size: 12px">@Model.TimeStamp</span>
                             </div>
                         </a>
                     </div>
@@ -121,7 +121,7 @@
         {
             <div class="card py-2 mt-2">
                 <div class="row">
-                    <div class="col-md-2 box1">
+                    <div class="col-md-2 box1 px-1">
                         @if (comment.UserImage != null)
                         {
                             <img src="~/images/@Model.UserImage" class="rounded-circle" style="width: 100%" asp-append-version="true" />
@@ -132,13 +132,13 @@
 
                         }
                     </div>
-                    <div class="col-md-10 box2">
+                    <div class="col-md-10 box2 px-1">
                         <div class="row">
                             <div class="col-md-5 p-0">
                                 @{
                                     var commenter = await userManager.FindByIdAsync(comment.AppUserId.ToString());
                                 }
-                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@comment.AppUserId"> @commenter.UserName.Split('@')[0]</a>
+                                <a class="user-name" asp-controller="Profile" asp-action="Index" asp-route-id="@comment.AppUserId"> @commenter.UserName.Split('@')[0]</a>
                                 <p class="timestamp">@comment.Time</p>
                             </div>
                             <div class="col-md-7 text-md-right px-1">

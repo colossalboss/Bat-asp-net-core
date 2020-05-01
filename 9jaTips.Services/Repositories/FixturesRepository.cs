@@ -98,7 +98,8 @@ namespace _9jaTips.Services.Repositories
 
         public List<Post> GetUsersPost(Guid id)
         {
-            return _db.AllPosts.Where(p => p.AppUserId == id).Include(p => p.Comments).ToList();
+            var posts = _db.AllPosts.Where(p => p.AppUserId == id).Include(p => p.Comments).ToList();
+            return posts.Reverse<Post>().ToList();
         }
 
         public List<string> GetUserStreak(Guid id)
@@ -110,7 +111,13 @@ namespace _9jaTips.Services.Repositories
             {
                 list.Add(post.Outcome);
             }
-            return list;
+
+            if (list.Count > 8)
+            {
+                return list.Reverse<string>().ToList().GetRange(0, 8);
+            }
+            return list.Reverse<string>().ToList();
+
         }
 
 
@@ -149,6 +156,5 @@ namespace _9jaTips.Services.Repositories
             _db.SaveChanges();
             return unliked;
         }
-
     }
 }

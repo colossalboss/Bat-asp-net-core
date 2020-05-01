@@ -78,7 +78,7 @@ namespace _9jaTips.Web.Controllers
                 };
                 modelList.Add(model);
             }
-            return View(modelList);
+            return View(modelList.Reverse<ListPostViewModel>().ToList());
         }
 
         public IActionResult Countries()
@@ -159,7 +159,7 @@ namespace _9jaTips.Web.Controllers
                 DetailsViewModel model = new DetailsViewModel
                 {
                     AppUserId = post.AppUserId,
-                    PostComments = postComments,
+                    PostComments = postComments.Reverse<CommentsViewModel>().ToList(),
                     Id = post.Id,
                     TimeStamp = post.PostDate.Humanize(),
                     Thoughts = post.Thoughts,

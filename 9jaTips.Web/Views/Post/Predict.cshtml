@@ -15,7 +15,7 @@
                     <input type="hidden" asp-for="MatchId" />
                     <input type="hidden" asp-for="Tip" />
                     <div class="form-group">
-                        <textarea asp-for="Thoughts" rows="6" placeholder="Write your thoughts" class="form-control"></textarea>
+                        <textarea asp-for="Thoughts" rows="6" placeholder="Write your thoughts" maxlength="300" class="form-control"></textarea>
                         <span asp-validation-for="Thoughts"></span>
                     </div>
 

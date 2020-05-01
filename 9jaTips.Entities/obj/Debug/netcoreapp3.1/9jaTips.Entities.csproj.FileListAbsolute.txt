@@ -6,3 +6,4 @@
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.dll
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.pdb
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.csprojAssemblyReference.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Entities/obj/Debug/netcoreapp3.1/9jaTips.Entities.csproj.CoreCompileInputs.cache

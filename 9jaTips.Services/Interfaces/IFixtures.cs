@@ -28,5 +28,6 @@ namespace _9jaTips.Services.Interfaces
         int GetCount(Guid id);
 
         Like HasLiked(Guid postId, Guid userId);
+
     }
 }

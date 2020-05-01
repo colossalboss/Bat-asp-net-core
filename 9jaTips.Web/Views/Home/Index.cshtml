@@ -1,4 +1,4 @@
-﻿@model SortedList<int, ListPostViewModel>
+﻿@model List<ListPostViewModel>
 @inject UserManager<AppUser> userManager
 @inject IFixtures _fixtures
 @inject SignInManager<AppUser> signInManager
@@ -29,7 +29,7 @@
             {
                 <div class="card py-2 mt-2">
                     <div class="row main">
-                        <div class="col-md-2 box1">
+                        <div class="col-md-2 box1 px-1">
                             @if (Model[i].Image != null)
                             {
                                 <img src="~/images/@Model[i].Image" class="rounded-circle" style="width: 100%" asp-append-version="true" />
@@ -40,13 +40,13 @@
 
                             }
                         </div>
-                        <div class="col-md-10 p-0 box2">
+                        <div class="col-md-10 p-0 box2 px-1">
                             <div class="row">
                                 <div class="col-md-5 p-0">
                                     @{
                                         var user = await userManager.FindByIdAsync(Model[i].UserId.ToString());
                                     }
-                                    <a asp-controller="Profile" asp-action="Index" asp-route-id="@Model[i].UserId"> @user.UserName.Split('@')[0]</a>
+                                    <a asp-controller="Profile" asp-action="Index" class="user-name" asp-route-id="@Model[i].UserId"> @user.UserName.Split('@')[0]</a>
                                     <p class="timestamp">@Model[i].PostDate</p>
 
                                 </div>
@@ -79,7 +79,7 @@
                                             <p class="mb-0">@Model[i].Fixture.Home vs @Model[i].Fixture.Away #@Model[i].Tip</p>
                                             <p>@Model[i].Fixture.League in @Model[i].Fixture.Country</p>
                                         </div>
-                                        <p class="mb-0">@Model[i].Thoughts</p>
+                                        <p class="mb-0 text-justify px-1">@Model[i].Thoughts</p>
                                     </div>
                                 </a>
                             </div>
@@ -164,7 +164,7 @@
                     <div class="card py-2">
                         <div class="row">
                             <div class="col-md-2 image">
-                                <img src="~/images/no-image.jpeg" class="image" style="border-radius: 50%; width: 100%" asp-append-version="true" />
+                                <img src="~/images/no-image.jpeg" class="image-popup" style="border-radius: 50%; width: 100%" asp-append-version="true" />
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -189,7 +189,7 @@
                                                 <p class="mb-0 match-tip"></p>
                                                 <p class="location"></p>
                                             </div>
-                                            <p class="mb-0 thoughts">post.Thoughts</p>
+                                            <p class="mb-0 thoughts text-justify">post.Thoughts</p>
                                             <span style="font-size: 12px" class="time"></span>
                                         </div>
                                     </a>

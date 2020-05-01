@@ -14,3 +14,4 @@
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Migrations.runtimeconfig.json
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/bin/Debug/netcoreapp3.1/9jaTips.Migrations.runtimeconfig.dev.json
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.genruntimeconfig.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Migrations/obj/Debug/netcoreapp3.1/9jaTips.Migrations.csproj.CoreCompileInputs.cache

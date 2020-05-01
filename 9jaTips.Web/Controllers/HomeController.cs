@@ -32,9 +32,8 @@ namespace _9jaTips.Web.Controllers
             var posts = _fixtures.GetAllPosts();
 
 
-            var modelList = new SortedList<int, ListPostViewModel>();
+            var modelList = new List<ListPostViewModel>();
 
-            var count = 0;
 
             foreach (var post in posts)
             {
@@ -51,10 +50,10 @@ namespace _9jaTips.Web.Controllers
                     PostDate = post.PostDate.Humanize(),
                     Comments = post.Comments,
                     Image = user.Image,
-                    Streak = streak
+                    //Streak = streak
+                    Streak = _fixtures.GetUserStreak(post.AppUserId)
                 };
-                modelList.Add(count, model);
-                count++;
+                modelList.Add(model);
             }
             return View(modelList);
         }

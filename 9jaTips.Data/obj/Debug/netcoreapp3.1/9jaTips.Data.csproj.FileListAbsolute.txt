@@ -17,3 +17,4 @@
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/obj/Debug/netcoreapp3.1/9jaTips.Data.dll
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/obj/Debug/netcoreapp3.1/9jaTips.Data.pdb
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/obj/Debug/netcoreapp3.1/9jaTips.Data.genruntimeconfig.cache
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Data/obj/Debug/netcoreapp3.1/9jaTips.Data.csproj.CoreCompileInputs.cache

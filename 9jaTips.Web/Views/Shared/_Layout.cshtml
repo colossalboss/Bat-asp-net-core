@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    @*<div style="height:100%;" id="topper">*@
+    <header id="header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">_9jaTips.Web</a>
+                <a class="navbar-brand text-danger" asp-area="" asp-controller="Home" asp-action="Index">_9jaTips.Web</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,49 +24,58 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link hidden-link" asp-area="" asp-controller="Misc" asp-action="TrendingLeagues">Leagues</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hidden-link" asp-area="" asp-controller="Misc" asp-action="Table">Table</a>
+                        </li>
+
                         @if (signInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
                                 <form class="nav-link py-0" asp-area="" asp-controller="Account" asp-action="Logout">
-                                    <button type="submit" class="nav-link bg-light text-dark border-0" style="width: 100%">Logout</button>
-                                    
+                                    <button type="submit" class="nav-link border-0 text-center text-light pt-1 logout" style="width: 100%;background:none;font-weight:bold">Logout</button>
                                 </form>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Countries">Post</a>
+                                <a class="nav-link" asp-area="" asp-controller="Post" asp-action="Countries">Post</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">@User.FindFirstValue(ClaimTypes.Name).Split('@')[0]</a>
+                                <a class="nav-link" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)"><i class="fa fa-user"></i> @User.FindFirstValue(ClaimTypes.Name).Split('@')[0]</a>
+
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
                         }
+
+
 
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
+    <div class="container-fluid" id="fluid">
         <main role="main" class="pb-3">
 
             <div class="row">
                 <div class="col-lg-3" id="leagues">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header h5">
                             Leagues
                         </div>
                         <div class="card-body">
@@ -92,11 +102,11 @@
 
                 <div class="col-lg-3" id="standings">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header h5">
                             Standings
                         </div>
                         <div class="card-body">
-                            <table class="table table-responsive table-striped">
+                            <table class="table table-striped table-hover" style="width:100%">
                                 <tr>
                                     <th>S/N</th>
                                     <th>Name</th>
@@ -158,8 +168,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
+
+            </div>
         </main>
     </div>
 
@@ -172,5 +183,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    @*</div>*@
 </body>
 </html>
