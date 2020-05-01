@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{B419B0BD-DE24-41FE-A2A6-BB5860DBE0CE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Views/Shared/Error.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Views/Shared/_Layout.cshtml">
     <Files>
-      <File FileName="9jaTips.Web/Startup.cs" Line="49" Column="20" />
+      <File FileName="9jaTips.Web/Startup.cs" Line="54" Column="76" />
       <File FileName="9jaTips.Web/ViewModels/LoginViewModel.cs" Line="30" Column="2" />
-      <File FileName="9jaTips.Web/Controllers/AccountController.cs" Line="176" Column="38" />
-      <File FileName="9jaTips.Web/Views/Account/Login.cshtml" Line="46" Column="16" />
-      <File FileName="9jaTips.Web/wwwroot/css/site.css" Line="160" Column="2" />
-      <File FileName="9jaTips.Web/Views/Shared/Error.cshtml" Line="1" Column="1" />
+      <File FileName="9jaTips.Web/Controllers/AccountController.cs" Line="142" Column="1" />
+      <File FileName="9jaTips.Web/wwwroot/css/site.css" Line="161" Column="47" />
+      <File FileName="9jaTips.Web/Views/Shared/Error.cshtml" Line="31" Column="61" />
+      <File FileName="9jaTips.Web/Views/Account/Register.cshtml" Line="58" Column="17" />
+      <File FileName="9jaTips.Web/Views/Shared/_Layout.cshtml" Line="12" Column="94" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,7 +29,7 @@
                 <Node name="Post" expanded="True" />
                 <Node name="Profile" expanded="True" />
                 <Node name="Shared" expanded="True">
-                  <Node name="Error.cshtml" selected="True" />
+                  <Node name="_Layout.cshtml" selected="True" />
                 </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
@@ -47,7 +48,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.9jaTips.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Controllers/AccountController.cs" relfile="9jaTips.Web/Controllers/AccountController.cs" line="142" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -30,12 +30,15 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <label asp-for="RememberMe">
+                            Remember me
                             <input asp-for="RememberMe" />
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Login</button>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
             </form>
         </div>
     </div>
@@ -49,12 +52,13 @@
                     @if (Model.ExternalLogins.Count != 0)
                     {
                         <form method="post" action="ExternalLogin">
-                            <div>
+                            <div class="ex-login-btns">
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
                                     <h4 class="card-title text-center ">
                                         <button type="submit" name="provider" value="@provider.Name" class="btn btn-default border text-primary"
                                                 title="Login using your @provider.DisplayName account" style="width:100%">
+                                            <i class="fa fa-@provider.Name.ToLower() mr-2"></i>
                                             Sign In With @provider.DisplayName
                                         </button>
                                     </h4>

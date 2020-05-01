@@ -47,6 +47,11 @@ namespace _9jaTips.Web
                 {
                     options.ClientId = "1057133403225-psvcpdnfeai59oqffr9g75avkc8vmeoj.apps.googleusercontent.com";
                     options.ClientSecret = "U58gCY_7uB0g0NWaxrThgj94";
+                })
+                .AddFacebook(options =>
+                {
+                    options.AppId = "550397005869639";
+                    options.AppSecret = "02ab78daad2d9fc9466e5c648cdf00c8";
                 });
 
             services.AddRazorPages().AddRazorRuntimeCompilation();

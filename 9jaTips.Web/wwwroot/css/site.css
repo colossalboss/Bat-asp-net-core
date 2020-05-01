@@ -59,6 +59,7 @@ html {
 }
 
 body {
+    font-family: 'Lato', sans-serif !important;
     /* Margin bottom by footer height */
     /*margin-bottom: 60px;*/
     height: 100% !important; /*Added style*/
@@ -112,7 +113,6 @@ nav {
 .timestamp {
     font-style: italic;
     font-size: 10px;
-
 }
 
 #main .row a {
@@ -157,6 +157,11 @@ main {
 
 .hidden-link {
     display: none;
+}
+
+.ex-login-btns .card-title:nth-child(2) button {
+    background-color: #007bffc9 !important;
+    color: #fff !important;
 }
 
 footer {
