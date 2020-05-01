@@ -39,3 +39,31 @@
             </form>
         </div>
     </div>
+
+<div class="container my-2">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-center">OR</h4>
+            <div class="card border-0">
+                <div class="card-header">
+                    @if (Model.ExternalLogins.Count != 0)
+                    {
+                        <form method="post" action="ExternalLogin">
+                            <div>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <h4 class="card-title text-center ">
+                                        <button type="submit" name="provider" value="@provider.Name" class="btn btn-default border text-primary"
+                                                title="Login using your @provider.DisplayName account" style="width:100%">
+                                            Sign In With @provider.DisplayName
+                                        </button>
+                                    </h4>
+                                 }
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

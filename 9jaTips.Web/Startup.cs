@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using _9jaTips.Data;
 using _9jaTips.Entities;
@@ -40,6 +41,14 @@ namespace _9jaTips.Web
                 .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddControllersWithViews();
+
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "1057133403225-psvcpdnfeai59oqffr9g75avkc8vmeoj.apps.googleusercontent.com";
+                    options.ClientSecret = "U58gCY_7uB0g0NWaxrThgj94";
+                });
+
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddAuthorization();
             

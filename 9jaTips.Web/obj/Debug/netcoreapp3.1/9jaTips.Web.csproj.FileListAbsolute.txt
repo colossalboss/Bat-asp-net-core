@@ -396,3 +396,4 @@
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/obj/Debug/netcoreapp3.1/9jaTips.Web.csproj.CoreCompileInputs.cache
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/obj/Debug/netcoreapp3.1/Razor/Views/Misc/Table.cshtml.g.cs
 /Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/obj/Debug/netcoreapp3.1/Razor/Views/Misc/TrendingLeagues.cshtml.g.cs
+/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll
