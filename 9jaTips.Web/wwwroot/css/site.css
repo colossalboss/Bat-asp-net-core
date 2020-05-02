@@ -164,6 +164,11 @@ main {
     color: #fff !important;
 }
 
+.full {
+    display: block;
+    width: 100% !important;
+}
+
 footer {
     position: relative !important;
     padding-bottom: .5rem !important;
@@ -196,15 +201,15 @@ footer {
         width: 60%;
         margin: auto;
     }
+
+    .hidden-link {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 420px) {
     .logout {
         width: auto !important;
-    }
-
-    .hidden-link {
-        display: block;
     }
 
     .container-fluid {

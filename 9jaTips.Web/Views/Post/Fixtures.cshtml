@@ -15,7 +15,7 @@
                     <ul class="list-group">
                         @foreach (var fixture in Model)
                         {
-                            <li class="list-group-item mt-2"><a asp-controller="Post" asp-action="Picks" asp-route-matchId="@fixture.MatchId">@fixture.Home vs @fixture.Away</a></li>
+                            <li class="list-group-item mt-2"><a asp-controller="Post" asp-action="Picks" asp-route-matchId="@fixture.MatchId" class="full">@fixture.Home vs @fixture.Away</a></li>
                         }
                     </ul>
                 </div>

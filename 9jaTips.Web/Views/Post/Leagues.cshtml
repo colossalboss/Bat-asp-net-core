@@ -9,7 +9,7 @@
                 <ul class="list-group">
                     @foreach (var league in ViewBag.Leagues)
                     {
-                        <li class="list-group-item mt-2"><a asp-controller="Post" asp-action="Fixtures" asp-route-country="@ViewBag.Country" asp-route-league="@league">@league</a></li>
+                        <li class="list-group-item mt-2"><a asp-controller="Post" asp-action="Fixtures" asp-route-country="@ViewBag.Country" asp-route-league="@league" class="full">@league</a></li>
                     }
                 </ul>
             </div>
