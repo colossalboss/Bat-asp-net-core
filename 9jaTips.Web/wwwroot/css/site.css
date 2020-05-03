@@ -151,7 +151,6 @@ main {
 }
 
 .row .user-name {
-    color: red !important;
     font-weight: bold;
 }
 
@@ -167,6 +166,13 @@ main {
 .full {
     display: block;
     width: 100% !important;
+}
+
+.picks ul li a:hover {
+    background: #007bff80 !important;
+    border-radius: 10px;
+    padding: .2rem;
+    color: #fff !important;
 }
 
 footer {

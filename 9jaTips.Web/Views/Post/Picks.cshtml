@@ -3,16 +3,17 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header font-weight-bold">
                 @Model.Home vs @Model.Away
                 <span class="float-right"><a asp-action="Fixtures" asp-route-country="@Model.Country" asp-route-league="@Model.League" class="btn btn-default border">Back</a></span>
+                <p class="font-weight-light">@Model.Country << @Model.League</p>
             </div>
         </div>
         <div class="card mt-4">
-            <div class="card-header">
+            <div class="card-header font-weight-bold">
                 1 X 2
             </div>
-            <div class="card-body  py-0">
+            <div class="card-body  py-0 picks">
                 <ul class="list-group">
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Home" class="full">Home</a></li>
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Draw" class="full">Draw</a></li>
@@ -22,10 +23,10 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-header">
+            <div class="card-header font-weight-bold">
                 Double Chance
             </div>
-            <div class="card-body py-0">
+            <div class="card-body py-0 picks">
                 <ul class="list-group">
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Home or Draw" class="full">Home or Draw</a></li>
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Home or Away" class="full">Home or Away</a></li>
@@ -35,10 +36,10 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-header">
+            <div class="card-header font-weight-bold">
                 Overs / Unders 2.5
             </div>
-            <div class="card-body py-0">
+            <div class="card-body py-0 picks">
                 <ul class="list-group">
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Over 2.5" class="full">Under 2.5</a></li>
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Under 2.5" class="full">Over 2.5</a></li>
@@ -47,10 +48,10 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-header">
+            <div class="card-header font-weight-bold">
                 Both teams to Score
             </div>
-            <div class="card-body py-0">
+            <div class="card-body py-0 picks">
                 <ul class="list-group">
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="GG" class="full">GG</a></li>
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="NG" class="full">NG</a></li>
@@ -59,10 +60,10 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-header">
+            <div class="card-header font-weight-bold">
                 Draw no bet
             </div>
-            <div class="card-body py-0">
+            <div class="card-body py-0 picks">
                 <ul class="list-group">
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Home DNB" class="full">Home</a></li>
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="Away DNB" class="full">Away</a></li>
@@ -71,10 +72,10 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-header">
+            <div class="card-header font-weight-bold">
                 Correct Score
             </div>
-            <div class="card-body py-0">
+            <div class="card-body py-0 picks">
                 <ul class="list-group">
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="CS 1 - 0" class="full">1 - 0</a></li>
                     <li class="list-group-item mt-2"><a asp-action="Predict" asp-route-matchId="@Model.MatchId" asp-route-selection="CS 2 - 0" class="full">2 - 0</a></li>
