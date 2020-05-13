@@ -5,6 +5,9 @@ using _9jaTips.Data;
 using _9jaTips.Entities;
 using _9jaTips.Services.Interfaces;
 using _9jaTips.Services.Services;
+using _9jaTips.Web.Utilities;
+using AutoMapper;
+using Humanizer;
 using Microsoft.EntityFrameworkCore;
 
 namespace _9jaTips.Services.Repositories
@@ -12,10 +15,12 @@ namespace _9jaTips.Services.Repositories
     public class FixturesRepository : IFixtures
     {
         private readonly AppDbContext _db;
+        private readonly IMapper _mapper;
 
-        public FixturesRepository(AppDbContext db)
+        public FixturesRepository(AppDbContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
 
         public Post AddPost(Post post)
@@ -27,7 +32,7 @@ namespace _9jaTips.Services.Repositories
 
         public List<Post> GetAllPosts()
         {
-            return _db.AllPosts.Include(p => p.Comments).ToList();
+            return _db.AllPosts.Include(p => p.Comments).Include(p => p.Likes).ToList();
         }
 
         public List<Post> GetCountryPosts(string country)
@@ -155,6 +160,80 @@ namespace _9jaTips.Services.Repositories
             _db.Remove(unliked);
             _db.SaveChanges();
             return unliked;
+        }
+
+        //API
+        public List<PostItem> GetPostItems()
+        {
+            var posts = _db.AllPosts.Include(p => p.Comments)
+                        .Include(p => p.Likes).ToList();
+
+            posts.Sort((x, y) => DateTime.Compare(y.PostDate, x.PostDate));
+
+
+            var resources = _mapper.Map<List<PostItem>>(posts);
+
+            for (var i = 0; i < resources.Count; i++)
+            {
+                resources[i] = TransformPost(posts[i], resources[i]);
+            }
+
+            return resources;
+        }
+
+        private PostItem TransformPost(Post p, PostItem pi)
+        {
+            var postItem = pi;
+            postItem.Comments = p.Comments.Count;
+            postItem.Likes = p.Likes.Count;
+            postItem.Streak = GetUserStreak(p.AppUserId);
+            postItem.Match = GetMatchById(p.MatchId);
+            postItem.TimeStamp = p.PostDate.Humanize();
+
+            return postItem;
+        }
+
+        private CommentDto TransformCommentToCommentDto(Comment c, CommentDto cd)
+        {
+            //var commentDto = cd;
+            cd.Streak = GetUserStreak(c.AppUserId);
+            cd.TimeStamp = c.TimeStamp.Humanize();
+
+            return cd;
+        }
+
+        private PostItem ConvertToPostItem(Post p)
+        {
+            var postItem = _mapper.Map<PostItem>(p);
+            postItem.TimeStamp = p.PostDate.Humanize();
+            postItem.Streak = GetUserStreak(p.AppUserId);
+            postItem.Match = GetMatchById(p.MatchId);
+            postItem.Likes = p.Likes.Count;
+            postItem.Comments = p.Comments.Count;
+            return postItem;
+        }
+
+        public PostItem GetPostItemById(Guid id)
+        {
+            var postItem = _db.AllPosts.Include(p => p.Comments)
+                        .Include(p => p.Likes)
+                        .FirstOrDefault(p => p.Id == id);
+
+            return ConvertToPostItem(postItem);
+        }
+
+        public List<CommentDto> GetPostComments(Guid id)
+        {
+            var comments = _db.AllComments.Where(c => c.PostId == id).ToList();
+            comments.Sort((x, y) => DateTime.Compare(y.TimeStamp, x.TimeStamp));
+
+            var commentDtos = _mapper.Map<List<CommentDto>>(comments);
+
+            for(var i = 0; i < commentDtos.Count; i++)
+            {
+                commentDtos[i] = TransformCommentToCommentDto(comments[i], commentDtos[i]);
+            }
+            return commentDtos;
         }
     }
 }

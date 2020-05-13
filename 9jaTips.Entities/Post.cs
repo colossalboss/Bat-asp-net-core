@@ -30,5 +30,7 @@ namespace _9jaTips.Entities
         public string Outcome { get; set; }
 
         public List<Comment> Comments { get; set; }
+
+        public List<Like> Likes { get; set; }
     }
 }

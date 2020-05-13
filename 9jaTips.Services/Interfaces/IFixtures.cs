@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _9jaTips.Entities;
 
+
 namespace _9jaTips.Services.Interfaces
 {
     public interface IFixtures
@@ -20,6 +21,8 @@ namespace _9jaTips.Services.Interfaces
         List<Post> GetAllPosts();
         List<Post> GetCountryPosts(string country);
 
+        
+
         Comment AddComment(Comment comment);
 
         Like AddLike(Like like);
@@ -28,6 +31,12 @@ namespace _9jaTips.Services.Interfaces
         int GetCount(Guid id);
 
         Like HasLiked(Guid postId, Guid userId);
+
+        //API
+        List<PostItem> GetPostItems();
+        PostItem GetPostItemById(Guid Id);
+
+        List<CommentDto> GetPostComments(Guid id);
 
     }
 }

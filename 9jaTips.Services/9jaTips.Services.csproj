@@ -12,9 +12,14 @@
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\9jaTips.Data\9jaTips.Data.csproj" />
     <ProjectReference Include="..\9jaTips.Entities\9jaTips.Entities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Humanizer.Core" Version="2.8.11" />
   </ItemGroup>
 </Project>
