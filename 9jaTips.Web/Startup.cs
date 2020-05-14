@@ -34,6 +34,7 @@ namespace _9jaTips.Web
         {
             services.AddScoped<IFixtures, FixturesRepository>();
 
+
             //services.AddDbContext<AppDbContext>(
             //    //option => option.UseSqlServer(Configuration.GetConnectionString("9jaTipsDB")
             //    options => options.UseSqlServer(Configuration.GetConnectionString("9jaTipsDB"), b => b.MigrationsAssembly("9jaTips.Data")
@@ -137,6 +138,16 @@ namespace _9jaTips.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use((context, next) =>
+            {
+                if (context.Request.Headers["x-forwarded-proto"] == "https")
+                {
+                    context.Request.Scheme = "https";
+                }
+                return next();
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
