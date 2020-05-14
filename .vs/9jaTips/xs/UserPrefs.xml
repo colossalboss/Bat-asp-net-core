@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{B419B0BD-DE24-41FE-A2A6-BB5860DBE0CE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Controllers/AccountController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Data/Migrations/20200514024543_SeedMatchData.cs">
     <Files>
-      <File FileName="9jaTips.Web/Startup.cs" Line="36" Column="1" />
+      <File FileName="9jaTips.Web/Startup.cs" Line="150" Column="1" />
       <File FileName="9jaTips.Web/appsettings.json" />
-      <File FileName="9jaTips.Data/Migrations/20200513231441_UsePostergre.cs" Line="4" Column="1" />
       <File FileName="9jaTips.Data/9jaTips.Data.csproj" />
       <File FileName="9jaTips.Web/Controllers/TestController.cs" Line="1" Column="1" />
       <File FileName="9jaTips.Web/Controllers/UserController.cs" Line="1" Column="1" />
-      <File FileName="9jaTips.Web/Controllers/AccountController.cs" Line="1" Column="1" />
+      <File FileName="9jaTips.Web/Controllers/AccountController.cs" Line="122" Column="1" />
+      <File FileName="9jaTips.Web/Helpers/ModelBuilderExtensions.cs" Line="68" Column="36" />
+      <File FileName="9jaTips.Data/AppDbContext.cs" Line="27" Column="28" />
+      <File FileName="9jaTips.Data/Migrations/20200514024543_SeedMatchData.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,17 +17,16 @@
           <Node name="9jaTips" expanded="True">
             <Node name="9jaTips.Data" expanded="True">
               <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Migrations" expanded="True" />
-            </Node>
-            <Node name="9jaTips.Services" expanded="True">
-              <Node name="Interfaces" expanded="True" />
+              <Node name="Helpers" expanded="True" />
+              <Node name="Migrations" expanded="True">
+                <Node name="20200514024543_SeedMatchData.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="9jaTips.Web" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="AccountController.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>

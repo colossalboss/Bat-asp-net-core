@@ -25,4 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\9jaTips.Entities\9jaTips.Entities.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
 </Project>

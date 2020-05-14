@@ -1,4 +1,5 @@
 ﻿using System;
+using _9jaTips.Data.Helpers;
 using _9jaTips.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -19,5 +20,11 @@ namespace _9jaTips.Data
         public DbSet<Comment> AllComments { get; set; }
 
         public DbSet<Like> AllLikes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Seed();
+        }
     }
 }
