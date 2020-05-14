@@ -107,6 +107,7 @@ namespace _9jaTips.Web.Controllers
 
                 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                model.ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             }
             return View(model);
         }
