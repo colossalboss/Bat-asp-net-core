@@ -177,6 +177,63 @@ namespace _9jaTips.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> EditUser()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return View("Error");
+            }
+
+            var user = await userManager.FindByIdAsync(userId);
+            var editModel = new EditUserViewModel
+            {
+                Email = user.Email,
+                //Password = user.PasswordHash.ToString(),
+                ExistingImage = user.Image
+            };
+
+            return View(editModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return View("Error");
+            }
+
+            var user = await userManager.FindByIdAsync(userId);
+
+            var registerModelForImageProcessing = new RegisterViewModel { ProfileImage = model.NewImage };
+            user.Email = model.Email;
+            user.Image = UploadedFile(registerModelForImageProcessing);
+
+            var result = await userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Profile", new { Id = userId });
+            }
+
+            foreach(var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return View(model);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
