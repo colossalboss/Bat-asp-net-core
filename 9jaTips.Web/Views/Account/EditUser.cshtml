@@ -12,7 +12,7 @@
 
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
-                        <img src="@userImage" alt="Profile Image" style="width: 100%" />
+                        <img src="~/images/@userImage" alt="Profile Image" asp-append-version="true" id="imageElem" style="width: 100%" />
                     </div>
                 </div>
                 <div class="row">
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label asp-for="NewImage" class="control-label"></label>
                             <div class="custom-file">
-                                <input asp-for="NewImage" class="custom-file-input" id="customFile">
+                                <input asp-for="NewImage" class="custom-file-input" id="imageUrl">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
                             <span asp-validation-for="NewImage" class="text-danger"></span>
@@ -43,3 +43,16 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            console.log('DOM fully loaded and parsed');
+            const imageInputElem = document.querySelector('#imageUrl');
+
+            //imageInputElem.addEventListener('change', function (e) {
+            //    document.querySelector('#imageElem').setAttribute("src", "~/"+e.target.value);
+            //})
+        });
+    </script>
+}
