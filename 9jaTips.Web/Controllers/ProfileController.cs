@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using _9jaTips.Entities;
 using _9jaTips.Services.Interfaces;
@@ -30,6 +31,17 @@ namespace _9jaTips.Web.Controllers
         public async Task<IActionResult> Index(Guid id)
         {
             var user = await userManager.FindByIdAsync(id.ToString());
+
+            var viewerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (user.Id == viewerId)
+            {
+                ViewBag.editable = true;
+            }
+            else
+            {
+                ViewBag.editable = false;
+            }
 
             var posts = _fixtures.GetUsersPost(id);
 
