@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B419B0BD-DE24-41FE-A2A6-BB5860DBE0CE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Data/Migrations/20200514024543_SeedMatchData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Startup.cs">
     <Files>
       <File FileName="9jaTips.Web/Startup.cs" Line="150" Column="1" />
       <File FileName="9jaTips.Web/appsettings.json" />
@@ -9,7 +9,6 @@
       <File FileName="9jaTips.Web/Controllers/AccountController.cs" Line="122" Column="1" />
       <File FileName="9jaTips.Web/Helpers/ModelBuilderExtensions.cs" Line="68" Column="36" />
       <File FileName="9jaTips.Data/AppDbContext.cs" Line="27" Column="28" />
-      <File FileName="9jaTips.Data/Migrations/20200514024543_SeedMatchData.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,12 +20,11 @@
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
               <Node name="Helpers" expanded="True" />
-              <Node name="Migrations" expanded="True">
-                <Node name="20200514024543_SeedMatchData.cs" selected="True" />
-              </Node>
+              <Node name="Migrations" expanded="True" />
             </Node>
             <Node name="9jaTips.Web" expanded="True">
               <Node name="Models" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
