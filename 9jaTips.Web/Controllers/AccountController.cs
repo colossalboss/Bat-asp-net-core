@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using _9jaTips.Entities;
 using _9jaTips.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -177,6 +178,7 @@ namespace _9jaTips.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> EditUser()
         {
