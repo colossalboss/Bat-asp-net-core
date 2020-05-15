@@ -235,5 +235,17 @@ namespace _9jaTips.Services.Repositories
             }
             return commentDtos;
         }
+
+        public Post DeletePost(Guid id)
+        {
+            var post = _db.AllPosts.FirstOrDefault(p => p.Id == id);
+
+            if (post != null)
+            {
+                _db.AllPosts.Remove(post);
+                _db.SaveChanges();
+            }
+            return post;
+        }
     }
 }

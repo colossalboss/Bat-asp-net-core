@@ -6,6 +6,7 @@
 @{
     ViewData["Title"] = "Profile Page";
     var user = await userManager.FindByIdAsync(Model.User.Id);
+    var viewer = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
 
@@ -118,7 +119,7 @@
                                 <p class="timestamp">@post.PostDate.Humanize()</p>
 
                             </div>
-                            <div class="col-md-7 text-md-right px-1">
+                            <div class="col-md-7 text-md-right px-1" id="user-streak">
                                 @if (post.Streak != null && post.Streak.Count > 0)
                                 {
                                     @foreach (var outcome in post.Streak)
@@ -137,6 +138,23 @@
                                         }
                                     }
                                 }
+                                <div class="btn-group" style="max-width: 10px;">
+                                    <button type="button" class="border-0 bg-none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border-0">
+                                        @if (user.Id == viewer)
+                                        {
+                                            <form method="post" asp-action="DeletePost" asp-controller="Post" asp-route-id="@post.Id">
+                                                <button class="dropdown-item" type="submit"><i class="fa fa-trash float-right" aria-hidden="true"></i></button>
+                                            </form>
+
+                                            <a class="dropdown-item" asp-action="EditPost" asp-controller="Post" asp-route-id="@post.Id"><i class="fa fa-pencil float-right" aria-hidden="true"></i></a>
+
+                                        }
+                                        <a class="dropdown-item text-red" asp-action="EditPost" asp-controller="Post"><i class="fa fa-thumbs-down float-right" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row ">
@@ -271,3 +289,14 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        document.querySelector('#user-streak').addEventListener('click', function (e) {
+            if (e.target.classList.contains('pover')) {
+                console.log(e.target)
+                $('#example').popover("toggle");
+            }
+        })
+    </script>
+}

@@ -20,6 +20,7 @@ namespace _9jaTips.Services.Interfaces
         Post AddPost(Post post);
         List<Post> GetAllPosts();
         List<Post> GetCountryPosts(string country);
+        Post DeletePost(Guid id);
 
         
 

@@ -275,6 +275,18 @@ namespace _9jaTips.Web.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult DeletePost(Guid id)
+        {
+            var deletedPost = new Post();
+            if (id != null)
+            {
+                deletedPost = _fixtures.DeletePost(id);
+            }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return RedirectToAction("Index", "Profile", new { Id = userId });
+        }
+
         // AJAX
         public async Task<IActionResult> GetOne(Guid id)
         {
@@ -301,6 +313,7 @@ namespace _9jaTips.Web.Controllers
             }
         }
 
+
         [HttpPost]
         public IActionResult PostComment(Comment model)
         {
@@ -323,5 +336,7 @@ namespace _9jaTips.Web.Controllers
             }
             return Json(new { success = false, message = "Invalid Comment" });
         }
+
+        
     }
 }

@@ -1,9 +1,14 @@
 ﻿<Properties StartupConfiguration="{B419B0BD-DE24-41FE-A2A6-BB5860DBE0CE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Views/Account/Login.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Services/Repositories/FixturesRepository.cs">
     <Files>
-      <File FileName="9jaTips.Web/Controllers/AccountController.cs" Line="94" Column="10" />
-      <File FileName="9jaTips.Web/ViewModels/RegisterViewModel.cs" Line="1" Column="1" />
-      <File FileName="9jaTips.Web/Views/Account/Login.cshtml" Line="1" Column="1" />
+      <File FileName="9jaTips.Web/Controllers/AccountController.cs" Line="110" Column="111" />
+      <File FileName="9jaTips.Web/ViewModels/RegisterViewModel.cs" />
+      <File FileName="9jaTips.Web/Views/Account/Login.cshtml" />
+      <File FileName="9jaTips.Web/Views/Profile/Index.cshtml" Line="149" Column="132" />
+      <File FileName="9jaTips.Web/Controllers/PostController.cs" Line="283" Column="1" />
+      <File FileName="9jaTips.Web/ViewModels/ListPostViewModel.cs" Line="1" Column="1" />
+      <File FileName="9jaTips.Services/Interfaces/IFixtures.cs" Line="23" Column="36" />
+      <File FileName="9jaTips.Services/Repositories/FixturesRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,13 +17,17 @@
             <Node name="9jaTips.Data" expanded="True">
               <Node name="Helpers" expanded="True" />
             </Node>
+            <Node name="9jaTips.Services" expanded="True">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Repositories" expanded="True">
+                <Node name="FixturesRepository.cs" selected="True" />
+              </Node>
+            </Node>
             <Node name="9jaTips.Web" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True">
-                  <Node name="Login.cshtml" selected="True" />
-                </Node>
+                <Node name="Account" expanded="True" />
                 <Node name="Home" expanded="True" />
                 <Node name="Profile" expanded="True" />
               </Node>
@@ -33,13 +42,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.9jaTips.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Controllers/AccountController.cs" relfile="9jaTips.Web/Controllers/AccountController.cs" line="98" column="1" />
-      <Breakpoint file="/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Controllers/AccountController.cs" relfile="9jaTips.Web/Controllers/AccountController.cs" line="100" column="1" />
-      <Breakpoint file="/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Controllers/AccountController.cs" relfile="9jaTips.Web/Controllers/AccountController.cs" line="111" column="1" />
-      <Breakpoint file="/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Controllers/AccountController.cs" relfile="9jaTips.Web/Controllers/AccountController.cs" line="101" column="1" />
-      <Breakpoint file="/Users/ogbaragodwin/Projects/9jaTips/9jaTips.Web/Controllers/AccountController.cs" relfile="9jaTips.Web/Controllers/AccountController.cs" line="103" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
