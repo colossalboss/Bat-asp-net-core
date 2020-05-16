@@ -95,6 +95,8 @@ nav {
     background: #007bffc9 !important;
 }
 
+
+
 #fluid {
     padding-top: 56px !important;
 }
@@ -156,6 +158,10 @@ main {
 
 .hidden-link {
     display: none;
+}
+
+#list li {
+    border: none !important;
 }
 
 .ex-login-btns .card-title:nth-child(2) button {
