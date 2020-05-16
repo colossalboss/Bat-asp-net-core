@@ -25,6 +25,7 @@ namespace _9jaTips.Services.Interfaces
         
 
         Comment AddComment(Comment comment);
+        Comment DeleteComment(Guid id);
 
         Like AddLike(Like like);
         Like Unlike(Guid id, Guid userId);

@@ -6,6 +6,7 @@
 @{
     ViewData["Title"] = "Post details";
     var streak = _fixtures.GetUserStreak(Model.AppUserId);
+    var viewer = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
 <div class="row">
@@ -157,6 +158,23 @@
                                         <span class="bg-warning px-1" style="min-width:40px">P</span>
                                     }
                                 }
+                                <div class="btn-group text-right">
+                                    <button type="button" class="border-0 bg-none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border-0">
+                                        @if (@comment.AppUserId.ToString() == viewer)
+                                        {
+                                            <form method="post" asp-action="DeleteComment" asp-controller="Post" asp-route-id="@comment.Id" asp-route-postId="@comment.PostId">
+                                                <button class="dropdown-item" type="submit"><i class="fa fa-trash float-right" aria-hidden="true"></i></button>
+                                            </form>
+
+                                            <a class="dropdown-item" asp-action="EditPost" asp-controller="Post" asp-route-id="@comment.Id"><i class="fa fa-pencil float-right" aria-hidden="true"></i></a>
+
+                                        }
+                                        <a class="dropdown-item text-red" asp-action="EditPost" asp-controller="Post"><i class="fa fa-thumbs-down float-right" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -165,6 +183,7 @@
                             </div>
                         </div>
                     </div>
+                        
                 </div>
             </div>
         }

@@ -247,5 +247,17 @@ namespace _9jaTips.Services.Repositories
             }
             return post;
         }
+
+        public Comment DeleteComment(Guid id)
+        {
+            var comment = _db.AllComments.FirstOrDefault(c => c.Id == id);
+
+            if (comment != null)
+            {
+                _db.AllComments.Remove(comment);
+                _db.SaveChanges();
+            }
+            return comment;
+        }
     }
 }

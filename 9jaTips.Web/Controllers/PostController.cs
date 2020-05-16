@@ -337,6 +337,19 @@ namespace _9jaTips.Web.Controllers
             return Json(new { success = false, message = "Invalid Comment" });
         }
 
-        
+        [HttpPost]
+        public IActionResult DeleteComment(Guid id, Guid postId)
+        {
+            Comment commentToDelete = new Comment();
+
+            if (id != null)
+            {
+                commentToDelete = _fixtures.DeleteComment(id);
+            }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return RedirectToAction("Details", "Post", new { Id = postId });
+        }
+
+
     }
 }
