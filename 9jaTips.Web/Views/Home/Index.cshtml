@@ -120,7 +120,7 @@
                                         </div>
                                         <div class="col-3">
                                             <a><i class="fa fa-facebook"></i></a>
-                                        </div>
+                                            <iframe src="" width="67" height="20" onclick="shareFb(event)" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>                                        </div>
                                         <div class="col-3">
                                             <a><i class="fa fa-twitter"></i></a>
                                         </div>
@@ -216,3 +216,16 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+<script>
+    var src = "https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Flocalhost%3A5001%2FPost%2FDetails%2Fe9897aa6-2e78-4628-9c6b-1e6b3612b0b0&layout=button&size=small&appId=550397005869639&width=67&height=20";
+
+    var href = document.URL;
+
+    function shareFb() {
+        console.log("clicked");
+        event.target.src = src;
+    }
+</script>
+}

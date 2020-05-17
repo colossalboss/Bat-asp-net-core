@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{B419B0BD-DE24-41FE-A2A6-BB5860DBE0CE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/wwwroot/css/site.css">
+  <MonoDevelop.Ide.Workbench ActiveDocument="9jaTips.Web/Views/Home/Index.cshtml">
     <Files>
-      <File FileName="9jaTips.Web/Views/Shared/_Layout.cshtml" Line="82" Column="56" />
-      <File FileName="9jaTips.Web/wwwroot/css/site.css" Line="1" Column="1" />
+      <File FileName="9jaTips.Web/Views/Shared/_Layout.cshtml" Line="105" Column="47" />
+      <File FileName="9jaTips.Web/wwwroot/css/site.css" />
+      <File FileName="9jaTips.Web/Views/Home/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,15 +22,15 @@
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
-                <Node name="Home" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
                 <Node name="Post" expanded="True" />
                 <Node name="Profile" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True">
-                  <Node name="site.css" selected="True" />
-                </Node>
+                <Node name="css" expanded="True" />
               </Node>
             </Node>
           </Node>
