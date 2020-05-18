@@ -2,13 +2,15 @@
 
 @{
     ViewData["Title"] = "User Login";
+
+    var text = Model.ReturnUrl != null ? "You have to login first" : "Login";
 }
 
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Login</h4>
+                    <h4 class="card-title">@text</h4>
                 </div>
             </div>
             <form method="post">
