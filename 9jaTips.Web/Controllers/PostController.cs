@@ -124,7 +124,6 @@ namespace _9jaTips.Web.Controllers
             return View(model);
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {

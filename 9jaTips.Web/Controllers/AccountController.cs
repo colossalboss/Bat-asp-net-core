@@ -100,8 +100,15 @@ namespace _9jaTips.Web.Controllers
             {
                 var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
+                
+
                 if (result.Succeeded)
                 {
+                    if (model.ReturnUrl != null)
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
 
